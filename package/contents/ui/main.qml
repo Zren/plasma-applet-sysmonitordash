@@ -18,6 +18,28 @@ Item {
 		property int visibleDuration: 60 * 1000
 		property int sensorInterval: 250
 		property int iconSensorInterval: 1000
+
+		property int cpuCount: 4
+
+		property string cpuSublabel: "AMD Phenom 960T"
+		property string ramSublabel: "Kingston HyperX 8GB (2 x 4GB) DDR3-1600"
+		property string swapSublabel: "Crucial M500 12Gb Partition"
+
+		property var diskModel: []
+		property var networkModel: []
+		property var sensorModel: []
+	}
+
+	function initJsonObjArr(configKey) {
+		// `plasmoid.configuration` is a QQmlPropertyMap
+		// https://github.com/KDE/plasma-framework/blob/master/src/scriptengines/qml/plasmoid/appletinterface.cpp#L161
+		// https://github.com/KDE/kdeclarative/blob/master/src/kdeclarative/configpropertymap.h
+		plasmoid.configuration.valueChanged.connect(function(key, value){
+			if (key == configKey) {
+				config[configKey] = JSON.parse(plasmoid.configuration[configKey])
+			}
+		})
+		config[configKey] = JSON.parse(plasmoid.configuration[configKey])
 	}
 
 
@@ -41,6 +63,12 @@ Item {
 
 	Component.onCompleted: {
 		plasmoid.setAction("openTaskManager", i18n("Start Task Manager"), "utilities-system-monitor");
+
+		initJsonObjArr('diskModel')
+		initJsonObjArr('networkModel')
+		initJsonObjArr('sensorModel')
+
+		// plasmoid.action("configure").trigger()
 	}
 
 	DashView {

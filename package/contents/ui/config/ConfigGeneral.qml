@@ -23,7 +23,7 @@ ColumnLayout {
 			// textArea.valueObjChanged()
 			textArea.jsonValue = JSON.stringify(textArea.valueObj, null, '  ')
 			textArea.jsonValueChanged()
-			plasmoid.configuration.exampleString = textArea.jsonValue
+			plasmoid.configuration.sensorModel = textArea.jsonValue
 			resizeColumnsToContents()
 		}
 
@@ -65,7 +65,7 @@ ColumnLayout {
 		Layout.fillWidth: true
 		Layout.fillHeight: true
 		property bool updateOnChange: true
-		property string value: '[{"icon": "fan", "sensors": ["lmsensors/it8720-isa-0228/fan3"], "colors": ["#888"], "defaultMax": 2000, "label": "Fan: Rear Exaust", "sublabel": "it8720-isa-0228/fan3", "units": "hz"}]'
+		property string value: plasmoid.configuration.sensorModel
 
 		property var valueObj: {
 			try {
