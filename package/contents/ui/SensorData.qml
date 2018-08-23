@@ -37,6 +37,8 @@ Item {
 	readonly property real swapFreeRatio: swapTotal ? swapFree / swapTotal : 0
 	readonly property real swapFreePercent: swapFreeRatio * 100
 
+	readonly property int cpuCount: dataSource.maxCpuIndex + 1
+
 	readonly property var partitionsList: getData(dataSource.partitionsList)
 	// onPartitionsListChanged: console.log('partitionsList', partitionsList)
 

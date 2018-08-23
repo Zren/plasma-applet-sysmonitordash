@@ -19,8 +19,6 @@ Item {
 		property int sensorInterval: 250
 		property int iconSensorInterval: 1000
 
-		property int cpuCount: 4
-
 		property string cpuSublabel: "AMD Phenom 960T"
 		property string ramSublabel: "Kingston HyperX 8GB (2 x 4GB) DDR3-1600"
 		property string swapSublabel: "Crucial M500 12Gb Partition"

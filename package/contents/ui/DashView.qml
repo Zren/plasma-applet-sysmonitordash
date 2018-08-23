@@ -54,12 +54,12 @@ Kicker.DashboardWindow {
 					icon: "cpu"
 					sensors: {
 						var l = []
-						for (var i = 0; i < config.cpuCount; i++) {
+						for (var i = 0; i < sensorData.cpuCount; i++) {
 							l.push("cpu/cpu" + i + "/TotalLoad")
 						}
 						return l
 					}
-					defaultMax: config.cpuCount * 100
+					defaultMax: sensorData.cpuCount * 100
 					stacked: true
 					colors: [
 						"#98AF93",
