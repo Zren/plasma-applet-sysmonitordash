@@ -5,9 +5,6 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
 
-
-// import "../code/utils.js" as Utils
-
 Item {
 	id: main
 

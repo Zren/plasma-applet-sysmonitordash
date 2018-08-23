@@ -3,7 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Layouts 1.0
 
 import ".."
-// import "../../code/utils.js" as Utils
+import "../lib"
 
 ConfigPage {
 	id: page

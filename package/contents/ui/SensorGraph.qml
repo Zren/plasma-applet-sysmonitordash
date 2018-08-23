@@ -1,17 +1,10 @@
 import QtQuick 2.1
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.1
-import QtQuick.Controls 2.0
-import QtQuick.Controls.Styles 1.0
-import QtMultimedia 5.6
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.components 2.0 as PlasmaComponents
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-
-import org.kde.plasma.private.kicker 0.1 as Kicker
+import QtQuick.Controls 2.0 // ToolTip
 
 import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
-import org.kde.kcoreaddons 1.0 as KCoreAddons
+// import org.kde.kcoreaddons 1.0 as KCoreAddons
 
 import "lib"
 
