@@ -7,6 +7,7 @@ import "../lib"
 
 ConfigPage {
 	id: page
+	showAppletVersion: true
 
 	property alias cfg_exampleBool: exampleBool.checked
 	property alias cfg_exampleInt: exampleInt.value
