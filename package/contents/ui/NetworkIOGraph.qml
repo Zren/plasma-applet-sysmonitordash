@@ -8,7 +8,7 @@ SensorGraph {
 		"#80b",
 		"#b08",
 	]
-	label: "Network"
+	label: i18n("Network")
 	sublabel: interfaceName
 	valueLabel: i18n("%1", humanReadableBits(maxY))
 	valueSublabel: i18n("%1 | %2", humanReadableBits(values[0]), humanReadableBits(values[1]))
