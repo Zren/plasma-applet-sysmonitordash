@@ -5,71 +5,82 @@ import QtQuick.Layouts 1.0
 import ".."
 import "../lib"
 
-ConfigPage {
-	id: page
-	showAppletVersion: true
+// ConfigPage {
+// 	id: page
+// 	showAppletVersion: true
+ColumnLayout {
 
-	property alias cfg_exampleBool: exampleBool.checked
-	property alias cfg_exampleInt: exampleInt.value
-	property alias cfg_exampleString: exampleString.text
-	
-
-	// Component.onCompleted: {
-	// 	cfg_exampleBool = true
-	// }
-
-
-	ConfigSection {
-		label: i18n("SubHeading")
-
-		CheckBox {
-			id: exampleBool
-			text: i18n("Boolean")
-		}
-		SpinBox {
-			id: exampleInt
-			suffix: i18n(" units")
-		}
-
+	SensorDetector {
+		id: sensorDetector
 	}
 
-	
-	ConfigSection {
-		label: i18n("SubHeading")
-
-		// RowLayout { // Crashes plasmashell on close... WHAT?
-		// ColumnLayout { // Crashes plasmashell on close... WHAT?
-			Text {
-				text: i18n("String")
-			}
-			TextField {
-				// id: exampleString
-				placeholderText: i18n("String")
-			}
-		// }
-	}
-
-	GroupBox {
+	JsonTableView {
+		id: tableView
 		Layout.fillWidth: true
+		Layout.fillHeight: true
 
-		ColumnLayout {
-			id: content
-			Layout.fillWidth: true
+		onCellChanged: {
+			// textArea.valueObjChanged()
+			textArea.jsonValue = JSON.stringify(textArea.valueObj, null, '  ')
+			textArea.jsonValueChanged()
+			plasmoid.configuration.exampleString = textArea.jsonValue
+			resizeColumnsToContents()
+		}
 
-			Text {
-				text: i18n("SubHeading")
-				font.bold: true
-			}
+		model: textArea.valueObj
 
-			RowLayout { // Does NOT crash plasmashell on close... WHAT? *headdesk*
-				Text {
-					text: i18n("String")
-				}
-				TextField {
-					id: exampleString
-					placeholderText: i18n("String")
-				}
+		JsonTableString {
+			role: "label"
+			title: i18n("Label")
+		}
+		JsonTableString {
+			role: "sublabel"
+			title: i18n("SubLabel")
+		}
+		JsonTableSensor {
+			role: "sensors"
+			title: i18n("Sensor")
+		}
+		JsonTableStringList {
+			role: "colors"
+			title: i18n("Color")
+		}
+		JsonTableString {
+			role: "icon"
+			title: i18n("Icon")
+		}
+		JsonTableString {
+			role: "units"
+			title: i18n("Units")
+		}
+		JsonTableInt {
+			role: "defaultMax"
+			title: i18n("Max")
+		}
+	}
+
+	TextArea {
+		id: textArea
+		// visible: false
+		Layout.fillWidth: true
+		Layout.fillHeight: true
+		property bool updateOnChange: true
+		property string value: '[{"icon": "fan", "sensors": ["lmsensors/it8720-isa-0228/fan3"], "colors": ["#888"], "defaultMax": 2000, "label": "Fan: Rear Exaust", "sublabel": "it8720-isa-0228/fan3", "units": "hz"}]'
+
+		property var valueObj: {
+			try {
+				return JSON.parse(value)
+			} catch (err) {
+				return ""
 			}
 		}
+		property string jsonValue: JSON.stringify(valueObj, null, '  ')
+
+		onJsonValueChanged: {
+			text = JSON.stringify(valueObj, null, '  ')
+		}
+
+		text: jsonValue
+
 	}
 }
