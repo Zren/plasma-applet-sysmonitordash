@@ -6,10 +6,6 @@ import org.kde.plasma.private.kicker 0.1 as Kicker
 
 Kicker.DashboardWindow {
 	id: window
-	x: 0
-	y: 0
-	width: Screen.width
-	height: Screen.height
 
 	backgroundColor: Qt.rgba(0, 0, 0, 0.737)
 
