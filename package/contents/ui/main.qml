@@ -8,6 +8,10 @@ import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
 Item {
 	id: main
 
+	DeviceData {
+		id: deviceData
+	}
+
 	SensorData {
 		id: sensorData
 		interval: config.sensorInterval
@@ -18,10 +22,6 @@ Item {
 		property int visibleDuration: 60 * 1000
 		property int sensorInterval: 250
 		property int iconSensorInterval: 1000
-
-		property string cpuSublabel: "AMD Phenom 960T"
-		property string ramSublabel: "Kingston HyperX 8GB (2 x 4GB) DDR3-1600"
-		property string swapSublabel: "Crucial M500 12Gb Partition"
 
 		property var diskModel: []
 		property var networkModel: []

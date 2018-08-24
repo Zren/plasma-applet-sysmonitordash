@@ -70,7 +70,7 @@ Kicker.DashboardWindow {
 						"#032236",
 					]
 					label: i18n("CPU")
-					sublabel: config.cpuSublabel
+					sublabel: plasmoid.configuration.cpuSublabel || deviceData.processorProduct
 					valueFont.family: "Hack"
 					valueLabel: formatLabel(sensorData.cpuTotalLoad, '%')
 					valueSublabel: {
@@ -108,7 +108,7 @@ Kicker.DashboardWindow {
 						"#336699",
 					]
 					label: i18n("RAM")
-					sublabel: config.ramSublabel
+					sublabel: plasmoid.configuration.ramSublabel || humanReadableBits(sensorData.memTotal)
 					valueLabel: i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
 						Math.round(sensorData.memFreePercent),
 						Math.round(sensorData.memCachedPercent),
@@ -127,7 +127,7 @@ Kicker.DashboardWindow {
 						"#1122aa22",
 					]
 					label: i18n("Swap")
-					sublabel: config.swapSublabel
+					sublabel: plasmoid.configuration.swapSublabel || humanReadableBits(sensorData.swapTotal)
 					valueLabel: i18n("Free: %1%\nUsed: %2%",
 						Math.round(sensorData.swapFreePercent),
 						Math.round(sensorData.swapUsedPercent))
