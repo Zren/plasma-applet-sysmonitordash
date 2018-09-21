@@ -224,16 +224,44 @@ Item {
 			acceptedButtons: Qt.NoButton
 			hoverEnabled: true
 			ToolTip {
-				id: control
+				id: tooltip
 				visible: mouseArea.containsMouse
-				text: visible ? calcText() : ""
+				text: ""
+
+				onVisibleChanged: {
+					if (visible) {
+						tooltip.updateText()
+					}
+				}
+
+				Connections {
+					target: plotter
+					enabled: tooltip.visible
+					onValuesChanged: {
+						tooltip.updateText()
+					}
+				}
+
+				function updateText() {
+					text = calcText()
+				}
+
 				function calcText() {
 					var xOffset = mouseArea.mouseX - mouseArea.x
 					var xRatio = xOffset / mouseArea.width
-					var valueIndex = Math.round(xRatio * (plotter.values.length-1))
-					var hoveredValue = plotter.values[valueIndex]
-					// console.log('\t', mouseArea.mouseX, mouseArea.x, xOffset, xRatio, valueIndex, hoveredValue)
-					return formatLabel(hoveredValue, plotter.units)
+
+					var str = ""
+					for (var j = 0; j < plotter.dataSets.length; j++) {
+						if (j > 0) {
+							str += "\n"
+						}
+						var dataset = plotter.dataSets[j]
+						var valueIndex = Math.round(xRatio * (dataset.values.length-1))
+						var hoveredValue = dataset.values[valueIndex]
+						str += formatLabel(hoveredValue, plotter.units)
+					}
+
+					return str
 				}
 			}
 		}
