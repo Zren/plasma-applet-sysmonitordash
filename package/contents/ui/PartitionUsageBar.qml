@@ -14,7 +14,7 @@ SimpleProgressBar {
 		ToolTip {
 			id: control
 			visible: mouseArea.containsMouse
-			text: i18n("Used: %1\nFree: %2", humanReadableBits(usedspace), humanReadableBits(freespace))
+			text: i18n("<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4", partitionPath, humanReadableBits(totalspace), humanReadableBits(usedspace), humanReadableBits(freespace))
 		}
 	}
 
