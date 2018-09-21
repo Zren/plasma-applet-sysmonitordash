@@ -18,41 +18,36 @@ SimpleProgressBar {
 		}
 	}
 
-	Layout.fillWidth: true
-	Layout.preferredHeight: Screen.height / 100
 	property int labelPadding: 4 * units.devicePixelRatio
-
-	implicitWidth: label.paintedWidth
-	Layout.minimumWidth: {
-		if (showLabel) {
-			return label.paintedWidth // Math.max(Screen.height / 100, label.paintedWidth)
-		} else {
-			return Screen.height / 100
-		}
-	}
-	// Layout.maximumWidth: Number.POSITIVE_INFINITY
-
-	Layout.minimumHeight: {
-		if (showLabel) {
-			return label.paintedHeight // Math.max(Screen.height / 100, label.paintedHeight)
-		} else {
-			return Screen.height / 100
-		}
-	}
 
 	property string partitionPath
 	readonly property double usedspace: sensorData.getData('partitions' + partitionPath + '/usedspace')
 	readonly property double freespace: sensorData.getData('partitions' + partitionPath + '/freespace')
 	readonly property double filllevel: sensorData.getData('partitions' + partitionPath + '/filllevel')
-	readonly property double totalspace: usedspace + freespace
+	property double totalspace: 0
 	readonly property bool isMounted: totalspace > 0
 
 	property alias label: label.text
 	property alias showLabel: label.visible
 
-	// onUsedspaceChanged: console.log(partitionPath, 'usedspace', usedspace)
-	// onFreespaceChanged: console.log(partitionPath, 'freespace', freespace)
+	Timer {
+		id: totalspaceDebounce
+		interval: 200
+		onTriggered: {
+			partitionUsageBar.totalspace = partitionUsageBar.usedspace + partitionUsageBar.freespace
+		}
+	}
+
+	onUsedspaceChanged: {
+		// console.log(partitionPath, 'usedspace', usedspace)
+		totalspaceDebounce.restart()
+	}
+	onFreespaceChanged: {
+		// console.log(partitionPath, 'freespace', freespace)
+		totalspaceDebounce.restart()
+	}
 	// onFilllevelChanged: console.log(partitionPath, 'filllevel', filllevel)
+	// onTotalspaceChanged: console.log(partitionPath, 'totalspace', totalspace)
 
 	// value: usedspace / (usedspace+freespace)
 	// maxValue: 1
@@ -73,6 +68,8 @@ SimpleProgressBar {
 		opacity: (partitionUsageBar.width >= (labelPadding + contentWidth + labelPadding)) ? 1 : 0
 		text: partitionPath
 		color: "#ffffff"
+		font.pointSize: -1
+		font.pixelSize: parent.height - labelPadding // Half padding top+bottom since font has extra spacing
 		font.bold: true
 		style: Text.Outline
 		styleColor: "#00000088"
