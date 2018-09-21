@@ -12,4 +12,8 @@ SensorGraph {
 	sublabel: interfaceName
 	valueLabel: i18n("%1", humanReadableBits(maxY))
 	valueSublabel: i18n("%1 | %2", humanReadableBits(values[0]), humanReadableBits(values[1]))
+	
+	function formatLabel(value, units) {
+		return humanReadableBits(value)
+	}
 }

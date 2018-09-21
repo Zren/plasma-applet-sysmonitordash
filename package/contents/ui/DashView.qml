@@ -69,6 +69,7 @@ Kicker.DashboardWindow {
 						"#123852",
 						"#032236",
 					]
+					units: '%'
 					label: i18n("CPU")
 					sublabel: plasmoid.configuration.cpuSublabel || deviceData.processorProduct
 					valueFont.family: "Hack"
@@ -114,6 +115,10 @@ Kicker.DashboardWindow {
 						Math.round(sensorData.memCachedPercent),
 						Math.round(sensorData.memBuffersPercent),
 						Math.round(sensorData.memAppsPercent))
+
+					function formatLabel(value, units) {
+						return humanReadableBits(value)
+					}
 				}
 
 				SensorGraph {
@@ -131,6 +136,10 @@ Kicker.DashboardWindow {
 					valueLabel: i18n("Free: %1%\nUsed: %2%",
 						Math.round(sensorData.swapFreePercent),
 						Math.round(sensorData.swapUsedPercent))
+
+					function formatLabel(value, units) {
+						return humanReadableBits(value)
+					}
 				}
 
 				Repeater {
