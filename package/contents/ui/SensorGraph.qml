@@ -246,6 +246,10 @@ Item {
 					text = calcText()
 				}
 
+				function stripAlpha(c) {
+					return Qt.rgba(c.r, c.g, c.b, 1)
+				}
+
 				function calcText() {
 					var xOffset = mouseArea.mouseX - mouseArea.x
 					var xRatio = xOffset / mouseArea.width
@@ -253,11 +257,13 @@ Item {
 					var str = ""
 					for (var j = 0; j < plotter.dataSets.length; j++) {
 						if (j > 0) {
-							str += "\n"
+							str += "<br>"
 						}
 						var dataset = plotter.dataSets[j]
 						var valueIndex = Math.round(xRatio * (dataset.values.length-1))
 						var hoveredValue = dataset.values[valueIndex]
+						
+						str += '<font color="' + stripAlpha(dataset.color) + '">■</font> '
 						str += formatLabel(hoveredValue, plotter.units)
 					}
 
