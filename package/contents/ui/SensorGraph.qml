@@ -223,6 +223,17 @@ Item {
 			anchors.fill: parent
 			acceptedButtons: Qt.NoButton
 			hoverEnabled: true
+
+			Rectangle {
+				id: hoverLine
+				visible: mouseArea.containsMouse
+				width: 1
+				height: parent.height
+				x: mouseArea.mouseX
+				opacity: 0.65
+				color: "#FFF"
+			}
+
 			ToolTip {
 				id: tooltip
 				visible: mouseArea.containsMouse
