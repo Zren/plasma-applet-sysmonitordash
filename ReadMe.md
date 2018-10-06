@@ -1,6 +1,6 @@
-# sysdash
+# System Monitor Dashboard
 
-Description
+* Disk Drives are parsed from the command `lsblk --output-all --json`.
 
 ## Screenshots
 
