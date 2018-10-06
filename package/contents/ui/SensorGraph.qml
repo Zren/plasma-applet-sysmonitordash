@@ -301,4 +301,16 @@ Item {
 			return Math.round(value)
 		}
 	}
+
+	function formatValuesLabel() {
+		var str = ''
+		for (var i = 0; i < values.length; i++) {
+			if (i > 0) {
+				str += ' | '
+			}
+			str += '<font color="' + colors[i % colors.length] + '">■</font> '
+			str += formatLabel(values[i], valueUnits)
+		}
+		return str
+	}
 }

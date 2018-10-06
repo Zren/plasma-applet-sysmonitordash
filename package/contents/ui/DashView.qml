@@ -80,10 +80,11 @@ Kicker.DashboardWindow {
 							if (i > 0) {
 								s += " | "
 							}
-							s += fixedWidth(Math.round(values[i]), 3) + " %"
+							s += formatLabel(values[i], valueUnits)
 						}
 						return s
 					}
+					// valueSublabel: formatValuesLabel()
 
 					function fixedWidth(x, n) {
 						var s = "" + x
@@ -91,6 +92,10 @@ Kicker.DashboardWindow {
 							s = " " + s
 						}
 						return s
+					}
+
+					function formatLabel(value, units) {
+						return fixedWidth(Math.round(value), 3) + " " + units
 					}
 				}
 

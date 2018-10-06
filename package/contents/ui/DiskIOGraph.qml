@@ -11,5 +11,5 @@ SensorGraph {
 	label: "Disk"
 	sublabel: partitionId
 	valueLabel: humanReadableBits(maxY)
-	valueSublabel: i18n("%1 | %2", humanReadableBits(values[0]), humanReadableBits(values[1]))
+	valueSublabel: formatValuesLabel()
 }
