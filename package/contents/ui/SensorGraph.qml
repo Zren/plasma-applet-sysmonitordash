@@ -24,13 +24,13 @@ Item {
 	property alias colors: plotter.colors
 	property alias stacked: plotter.stacked
 	property alias defaultMax: plotter.defaultMax
-	property alias units: plotter.units
+	property alias valueUnits: plotter.units
 
-	property int padding: 4
+	property int padding: 4 * units.devicePixelRatio
 	
 
 	Layout.fillWidth: true
-	Layout.preferredHeight: Screen.height / 10
+	Layout.preferredHeight: 120 * units.devicePixelRatio
 
 	Rectangle {
 		anchors.fill: parent

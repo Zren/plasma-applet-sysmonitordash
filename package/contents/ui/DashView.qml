@@ -69,7 +69,7 @@ Kicker.DashboardWindow {
 						"#123852",
 						"#032236",
 					]
-					units: '%'
+					valueUnits: '%'
 					label: i18n("CPU")
 					sublabel: plasmoid.configuration.cpuSublabel || deviceData.processorProduct
 					valueFont.family: "Hack"
@@ -171,7 +171,7 @@ Kicker.DashboardWindow {
 						defaultMax: modelData.defaultMax || 0
 						label: modelData.label || ""
 						sublabel: modelData.sublabel || ""
-						units: modelData.units || undefined
+						valueUnits: modelData.units || undefined
 					}
 				}
 				
