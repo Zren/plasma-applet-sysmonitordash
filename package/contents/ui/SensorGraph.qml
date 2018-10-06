@@ -239,6 +239,10 @@ Item {
 				visible: mouseArea.containsMouse
 				text: ""
 
+				property int cursorMargin: 3
+				x: mouseArea.mouseX - implicitWidth / 2
+				y: mouseArea.mouseY - implicitHeight - cursorMargin
+
 				onVisibleChanged: {
 					if (visible) {
 						tooltip.updateText()
