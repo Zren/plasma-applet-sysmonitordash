@@ -5,6 +5,8 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 import org.kde.kquickcontrolsaddons 2.0 as KQuickAddons
 
+import "lib"
+
 Item {
 	id: main
 
@@ -43,26 +45,22 @@ Item {
 
 	Plasmoid.preferredRepresentation: Plasmoid.compactRepresentation
 
-	PlasmaCore.DataSource {
-		id: executeSource
-		engine: "executable"
-		connectedSources: []
-		onNewData: {
-			disconnectSource(sourceName)
-		}
+	ExecUtil {
+		id: execUtil
 	}
-	function exec(cmd) {
-		executeSource.connectSource(cmd)
+
+	ListBlockDevices {
+		id: lsblk
 	}
 
 	function action_openTaskManager() {
-		exec("ksysguard");
+		execUtil.exec("ksysguard")
 	}
 
 	Component.onCompleted: {
 		plasmoid.setAction("openTaskManager", i18n("Start Task Manager"), "utilities-system-monitor");
 
-		initJsonObjArr('diskModel')
+		// initJsonObjArr('diskModel')
 		initJsonObjArr('networkModel')
 		initJsonObjArr('sensorModel')
 
