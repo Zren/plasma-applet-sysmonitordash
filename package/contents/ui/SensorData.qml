@@ -22,16 +22,22 @@ Item {
 	readonly property real swapTotal: swapUsed + swapFree
 	readonly property real cpuTotalLoadRatio: cpuTotalLoad / dataSource.maxCpuLoad
 	readonly property real cpuTotalLoadPercent: cpuTotalLoadRatio * 100
-	readonly property real memAppsRatio: memTotal ? memApps / memTotal : 0
-	readonly property real memAppsPercent: memAppsRatio * 100
-	readonly property real memBuffersRatio: memTotal ? memBuffers / memTotal : 0
-	readonly property real memBuffersPercent: memBuffersRatio * 100
-	readonly property real memCachedRatio: memTotal ? memCached / memTotal : 0
-	readonly property real memCachedPercent: memCachedRatio * 100
-	readonly property real memUsedRatio: memTotal ? memUsed / memTotal : 0
-	readonly property real memUsedPercent: memUsedRatio * 100
-	readonly property real memFreeRatio: memTotal ? memFree / memTotal : 0
-	readonly property real memFreePercent: memFreeRatio * 100
+
+	// readonly property real memAppsRatio: memTotal ? memApps / memTotal : 0
+	// readonly property real memAppsPercent: memAppsRatio * 100
+	// readonly property real memBuffersRatio: memTotal ? memBuffers / memTotal : 0
+	// readonly property real memBuffersPercent: memBuffersRatio * 100
+	// readonly property real memCachedRatio: memTotal ? memCached / memTotal : 0
+	// readonly property real memCachedPercent: memCachedRatio * 100
+	// readonly property real memUsedRatio: memTotal ? memUsed / memTotal : 0
+	// readonly property real memUsedPercent: memUsedRatio * 100
+	// readonly property real memFreeRatio: memTotal ? memFree / memTotal : 0
+	// readonly property real memFreePercent: memFreeRatio * 100
+	function memPercentage(value) {
+		var ratio = memTotal ? value / memTotal : 0
+		return ratio * 100
+	}
+	
 	readonly property real swapUsedRatio: swapTotal ? swapUsed / swapTotal : 0
 	readonly property real swapUsedPercent: swapUsedRatio * 100
 	readonly property real swapFreeRatio: swapTotal ? swapFree / swapTotal : 0
