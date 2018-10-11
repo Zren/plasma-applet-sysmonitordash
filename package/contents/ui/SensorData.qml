@@ -45,6 +45,8 @@ Item {
 	readonly property real uploadSpeed: getData(dataSource.uploadSource)
 	readonly property real downloadSpeed: getData(dataSource.downloadSource)
 
+	property var networkSensorList: []
+
 	// /usr/share/plasma/plasmoids/org.kde.plasma.systemloadviewer/contents/ui/SystemLoadViewer.qml
 	property alias dataSource: dataSource
 	property alias interval: dataSource.interval
@@ -107,6 +109,16 @@ Item {
 				connectSource(source)
 				if (maxCpuIndex < match[1]) {
 					maxCpuIndex = match[1]
+				}
+			}
+
+			match = source.match(/^network\/interfaces\/(\w+)\//)
+			if (match) {
+				var networkName = match[1]
+				if (sensorData.networkSensorList.indexOf(networkName) === -1) {
+					// Add if not seen before
+					sensorData.networkSensorList.push(networkName)
+					sensorData.networkSensorListChanged()
 				}
 			}
 		}

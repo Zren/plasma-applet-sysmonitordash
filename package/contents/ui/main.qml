@@ -53,6 +53,10 @@ Item {
 		id: lsblk
 	}
 
+	NetworkListDetector {
+		id: networkListDetector
+	}
+
 	function action_openTaskManager() {
 		execUtil.exec("ksysguard")
 	}
@@ -61,7 +65,7 @@ Item {
 		plasmoid.setAction("openTaskManager", i18n("Start Task Manager"), "utilities-system-monitor");
 
 		// initJsonObjArr('diskModel')
-		initJsonObjArr('networkModel')
+		// initJsonObjArr('networkModel')
 		initJsonObjArr('sensorModel')
 
 		// plasmoid.action("configure").trigger()
