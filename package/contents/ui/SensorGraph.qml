@@ -321,6 +321,9 @@ Item {
 
 
 	function stripAlpha(c) {
+		if (typeof(c) == "string") {
+			c = Qt.tint(c, "transparent")
+		}
 		return Qt.rgba(c.r, c.g, c.b, 1)
 	}
 
