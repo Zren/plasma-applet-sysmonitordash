@@ -276,28 +276,17 @@ Item {
 					text = calcText()
 				}
 
-				function stripAlpha(c) {
-					return Qt.rgba(c.r, c.g, c.b, 1)
-				}
-
 				function calcText() {
 					var xOffset = mouseArea.mouseX - mouseArea.x
 					var xRatio = xOffset / mouseArea.width
 
-					var str = ""
-					for (var j = 0; j < plotter.dataSets.length; j++) {
-						if (j > 0) {
-							str += "<br>"
-						}
-						var dataset = plotter.dataSets[j]
-						var valueIndex = Math.round(xRatio * (dataset.values.length-1))
-						var hoveredValue = dataset.values[valueIndex]
-						
-						str += '<font color="' + stripAlpha(dataset.color) + '">■</font> '
-						str += formatLabel(hoveredValue, plotter.units)
+					if (plotter.dataSets.length > 0) {
+						var datasetLength = plotter.dataSets[0].values.length
+						var valueIndex = Math.round(xRatio * (datasetLength-1))
+						return formatLegend(valueIndex)
+					} else {
+						return ""
 					}
-
-					return str
 				}
 			}
 		}
@@ -326,6 +315,28 @@ Item {
 			str += '<font color="' + colors[i % colors.length] + '">■</font> '
 			str += formatLabel(values[i], valueUnits)
 		}
+		return str
+	}
+
+
+
+	function stripAlpha(c) {
+		return Qt.rgba(c.r, c.g, c.b, 1)
+	}
+
+	function formatLegend(valueIndex) {
+		var str = ""
+		for (var j = 0; j < plotter.dataSets.length; j++) {
+			if (j > 0) {
+				str += "<br>"
+			}
+			var dataset = plotter.dataSets[j]
+			var hoveredValue = dataset.values[valueIndex]
+			
+			str += '<font color="' + stripAlpha(dataset.color) + '">■</font> '
+			str += formatLabel(hoveredValue, plotter.units)
+		}
+
 		return str
 	}
 }
