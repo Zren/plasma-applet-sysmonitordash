@@ -16,6 +16,8 @@ Item {
 	property alias sublabel: plotter.sublabel
 	property alias valueLabel: plotter.valueLabel
 	property alias valueSublabel: plotter.valueSublabel
+	property alias maxYLabel: plotter.maxYLabel
+	property alias maxYVisible: maxYItem.visible
 	property alias valueFont: plotter.valueFont
 	property alias sensors: plotter.sensors
 	property alias values: plotter.values
@@ -49,6 +51,7 @@ Item {
 		property string sublabel: ''
 		property string valueLabel: formatLabel(values[0], plotter.units)
 		property string valueSublabel: ''
+		property string maxYLabel: formatLabel(maxY, plotter.units)
 		property alias valueFont: valueLabel.font
 		property var sensors: []
 		property var values: []
@@ -149,6 +152,18 @@ Item {
 				leftMargin: sensorGraph.padding
 				topMargin: sensorGraph.padding
 			}
+		}
+		TextLabel {
+			id: maxYItem
+			anchors {
+				left: parent.left
+				right: parent.right
+				top: parent.top
+				topMargin: sensorGraph.padding
+			}
+			horizontalAlignment: Text.AlignHCenter
+			text: plotter.maxYLabel || ''
+			opacity: 0.75
 		}
 
 		TextLabel {

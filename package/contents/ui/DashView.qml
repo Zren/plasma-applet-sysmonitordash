@@ -85,6 +85,7 @@ Kicker.DashboardWindow {
 						return s
 					}
 					// valueSublabel: formatValuesLabel()
+					maxYVisible: false
 
 					function fixedWidth(x, n) {
 						var s = "" + x
@@ -120,6 +121,7 @@ Kicker.DashboardWindow {
 						Math.round(sensorData.memCachedPercent),
 						Math.round(sensorData.memBuffersPercent),
 						Math.round(sensorData.memAppsPercent))
+					maxYVisible: false
 
 					function formatLabel(value, units) {
 						return humanReadableBits(value)
@@ -141,6 +143,7 @@ Kicker.DashboardWindow {
 					valueLabel: i18n("Free: %1%\nUsed: %2%",
 						Math.round(sensorData.swapFreePercent),
 						Math.round(sensorData.swapUsedPercent))
+					maxYVisible: false
 
 					function formatLabel(value, units) {
 						return humanReadableBits(value)
