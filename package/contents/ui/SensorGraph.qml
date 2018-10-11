@@ -310,7 +310,7 @@ Item {
 		var str = ''
 		for (var i = 0; i < values.length; i++) {
 			if (i > 0) {
-				str += ' | '
+				str += "<br>"
 			}
 			var label = (i < legendLabels.length) ? legendLabels[i] : ''
 			str += formatItem(colors[i % colors.length], label, values[i], valueUnits)
