@@ -6,7 +6,6 @@ QtObject {
 	property Connections sensorConnection: Connections {
 		target: sensorData
 		onNetworkSensorListChanged: {
-			console.log('onNetworkSensorListChanged')
 			networkListDetector.updateNetworkModel()
 		}
 	}
