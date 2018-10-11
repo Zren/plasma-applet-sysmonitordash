@@ -312,8 +312,8 @@ Item {
 			if (i > 0) {
 				str += ' | '
 			}
-			str += '<font color="' + colors[i % colors.length] + '">■</font> '
-			str += formatLabel(values[i], valueUnits)
+			var label = (i < legendLabels.length) ? legendLabels[i] : ''
+			str += formatItem(colors[i % colors.length], label, values[i], valueUnits)
 		}
 		return str
 	}
@@ -335,11 +335,21 @@ Item {
 			}
 			var dataset = plotter.dataSets[j]
 			var hoveredValue = dataset.values[valueIndex]
-			
-			str += '<font color="' + stripAlpha(dataset.color) + '">■</font> '
-			str += formatLabel(hoveredValue, plotter.units)
+			var label = ''
+
+			str += formatItem(dataset.color, label, hoveredValue, plotter.units)
 		}
 
+		return str
+	}
+
+	function formatItem(color, label, value, units) {
+		var str = ""
+		str += '<font color="' + stripAlpha(color) + '">■</font> '
+		if (label) {
+			str += "<b>" + label + ":</b> "
+		}
+		str += formatLabel(value, units)
 		return str
 	}
 }
