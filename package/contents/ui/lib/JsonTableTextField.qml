@@ -18,8 +18,8 @@ TextField {
 	}
 	onFocusChanged: {
 		if (focus) {
-			tableView.selection.clear()
-			tableView.selection.select(styleData.row, styleData.row)
+			// tableView.selection.clear()
+			// tableView.selection.select(styleData.row, styleData.row)
 		}
 	}
 
