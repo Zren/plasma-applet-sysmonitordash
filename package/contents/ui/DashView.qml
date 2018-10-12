@@ -114,8 +114,8 @@ Kicker.DashboardWindow {
 					// 	Math.round(sensorData.memCachedPercent),
 					// 	Math.round(sensorData.memBuffersPercent),
 					// 	Math.round(sensorData.memAppsPercent))
-					valueLabel: formatValuesLabel() +
-						"<br>" + formatItem('transparent', i18n("Free"), sensorData.memFree, '')
+					valueLabel: formatItem('transparent', i18n("Free"), sensorData.memFree, '')
+						+ "<br>" + formatValuesLabel()
 					maxYVisible: false
 
 					function formatLabel(value, units) {
@@ -138,8 +138,8 @@ Kicker.DashboardWindow {
 					]
 					label: i18n("Swap")
 					sublabel: plasmoid.configuration.swapSublabel || humanReadableBits(sensorData.swapTotal)
-					valueLabel: formatValuesLabel() +
-						"<br>" + formatItem('transparent', i18n("Free"), sensorData.swapFree, '')
+					valueLabel: formatItem('transparent', i18n("Free"), sensorData.swapFree, '')
+						+ "<br>" + formatValuesLabel()
 					maxYVisible: false
 
 					function formatLabel(value, units) {
