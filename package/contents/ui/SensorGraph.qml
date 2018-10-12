@@ -275,7 +275,7 @@ Item {
 
 				property int cursorMargin: 3
 				x: mouseArea.mouseX - implicitWidth / 2
-				y: mouseArea.mouseY - implicitHeight - cursorMargin
+				y: mouseArea.height + cursorMargin
 
 				onVisibleChanged: {
 					if (visible) {
