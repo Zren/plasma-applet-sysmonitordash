@@ -9,6 +9,11 @@ Item {
 		if (typeof dataSource.data[key].value === 'undefined') return 0;
 		return dataSource.data[key].value;
 	}
+	function getUnits(key) {
+		if (typeof dataSource.data[key] === 'undefined') return '';
+		if (typeof dataSource.data[key].units === 'undefined') return '';
+		return dataSource.data[key].units;
+	}
 
 	readonly property real cpuTotalLoad: getData(dataSource.totalLoad)
 	readonly property real memApps: getData(dataSource.memApplication)

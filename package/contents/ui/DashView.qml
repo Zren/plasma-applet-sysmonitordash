@@ -69,7 +69,6 @@ Kicker.DashboardWindow {
 						"#123852",
 						"#032236",
 					]
-					valueUnits: '%'
 					label: i18n("CPU")
 					sublabel: plasmoid.configuration.cpuSublabel || deviceData.processorProduct
 					valueLabel: formatValuesLabel()
@@ -174,7 +173,7 @@ Kicker.DashboardWindow {
 						defaultMax: modelData.defaultMax || 0
 						label: modelData.label || ""
 						sublabel: modelData.sublabel || ""
-						valueUnits: modelData.units || undefined
+						valueUnits: modelData.units || sensorUnits
 					}
 				}
 				

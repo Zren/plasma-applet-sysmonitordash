@@ -24,7 +24,8 @@ Item {
 	property alias colors: plotter.colors
 	property alias stacked: plotter.stacked
 	property alias defaultMax: plotter.defaultMax
-	property alias valueUnits: plotter.units
+	readonly property string sensorUnits: sensorData.getUnits(sensors[0])
+	property string valueUnits: sensorUnits
 	
 	property var legendLabels: []
 
@@ -71,7 +72,7 @@ Item {
 		}
 		
 		property var colors: [theme.highlightColor]
-		property var units: undefined
+		property var units: sensorGraph.valueUnits
 		sampleSize: Math.floor(config.visibleDuration / config.sensorInterval) + 1
 
 
