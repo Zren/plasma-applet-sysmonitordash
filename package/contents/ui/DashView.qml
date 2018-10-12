@@ -2,6 +2,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.1
 
+// import org.kde.kcoreaddons 1.0 as KCoreAddons
 import org.kde.plasma.private.kicker 0.1 as Kicker
 
 Kicker.DashboardWindow {
@@ -184,6 +185,8 @@ Kicker.DashboardWindow {
 	}
 
 	function humanReadableBits(kilobits) {
+		// return KCoreAddons.Format.formatByteSize(kilobits * 1024);
+
 		if (kilobits > 1000000000) {
 			return i18n("%1 TB", Math.round(kilobits/1000000000))
 		} else if (kilobits > 1000000) {
