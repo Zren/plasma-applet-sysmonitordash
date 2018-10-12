@@ -191,13 +191,13 @@ Kicker.DashboardWindow {
 
 	function humanReadableBits(kilobits) {
 		if (kilobits > 1000000000) {
-			return i18n("%1 Tb", Math.round(kilobits/1000000000))
+			return i18n("%1 TB", Math.round(kilobits/1000000000))
 		} else if (kilobits > 1000000) {
-			return i18n("%1 Gb", Math.round(kilobits/1000000))
+			return i18n("%1 GB", Math.round(kilobits/1000000))
 		} else if (kilobits > 1000) {
-			return i18n("%1 Mb", Math.round(kilobits/1000))
+			return i18n("%1 MB", Math.round(kilobits/1000))
 		} else {
-			return i18n("%1 Kb", Math.round(kilobits))
+			return i18n("%1 KB", Math.round(kilobits))
 		}
 	}
 }
