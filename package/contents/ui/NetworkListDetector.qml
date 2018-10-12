@@ -45,7 +45,7 @@ QtObject {
 
 			// First two letters are 
 			if (networkName.match(/^wl/)) { // Wireless
-				newNetwork.label = i18n("WiFi")
+				newNetwork.label = i18n("Wi-Fi")
 				newNetwork.icon = "network-wireless"
 			} else { // Eg: en (Ethernet)
 				newNetwork.label = i18n("Network")
