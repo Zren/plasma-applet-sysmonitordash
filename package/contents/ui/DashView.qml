@@ -128,6 +128,9 @@ Kicker.DashboardWindow {
 					sensors: [
 						"mem/swap/used",
 					]
+					legendLabels: [
+						i18n("Used"),
+					]
 					defaultMax: sensorData.swapTotal
 					stacked: true
 					colors: [
@@ -135,9 +138,8 @@ Kicker.DashboardWindow {
 					]
 					label: i18n("Swap")
 					sublabel: plasmoid.configuration.swapSublabel || humanReadableBits(sensorData.swapTotal)
-					valueLabel: i18n("Free: %1%\nUsed: %2%",
-						Math.round(sensorData.swapFreePercent),
-						Math.round(sensorData.swapUsedPercent))
+					valueLabel: formatValuesLabel() +
+						"<br>" + formatItem('transparent', i18n("Free"), sensorData.swapFree, '')
 					maxYVisible: false
 
 					function formatLabel(value, units) {
