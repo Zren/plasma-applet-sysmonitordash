@@ -169,14 +169,48 @@ Kicker.DashboardWindow {
 					model: config.sensorModel
 
 					SensorGraph {
-						icon: modelData.icon || ""
-						iconOverlays: modelData.iconOverlays || []
+						icon: modelData.icon || sensorPreset.icon || ""
+						iconOverlays: modelData.iconOverlays || sensorPreset.iconOverlays || []
 						sensors: modelData.sensors || []
-						colors: modelData.colors || []
-						defaultMax: modelData.defaultMax || 0
-						label: modelData.label || ""
-						sublabel: modelData.sublabel || ""
+						colors: modelData.colors || sensorPreset.colors || []
+						defaultMax: modelData.defaultMax || sensorPreset.defaultMax || 0
+						label: modelData.label || sensorPreset.label || ""
+						sublabel: modelData.sublabel || sensorPreset.sublabel || ""
 						valueUnits: modelData.units || sensorUnits
+
+						property var sensorPreset: {
+							var sensorName = modelData.sensors[0]
+
+							var match = sensorName.match(/^lmsensors\/((.+)\/(fan\d+))$/)
+							if (match) {
+								return {
+									icon: 'fan',
+									colors: ["#888"],
+									label: i18n("Fan"),
+									sublabel: match[1],
+									defaultMax: 2000,
+								}
+							}
+
+							var match = sensorName.match(/^lmsensors\/((.+)\/(temp\d+))$/)
+							if (match) {
+								var tempPreset = {
+									colors: ["#800"],
+									label: i18n("Temp"),
+									sublabel: match[1],
+									defaultMax: 70,
+								}
+								var chipName = match[2]
+								if (chipName.match(/^radeon-/)) {
+									tempPreset.icon = 'amd-logo'
+									tempPreset.label = i18n("GPU")
+								}
+								
+								return tempPreset
+							}
+
+							return {}
+						}
 					}
 				}
 				
