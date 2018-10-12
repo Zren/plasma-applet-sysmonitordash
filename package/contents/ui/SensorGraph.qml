@@ -24,9 +24,11 @@ Item {
 	property alias colors: plotter.colors
 	property alias stacked: plotter.stacked
 	property alias defaultMax: plotter.defaultMax
+
+	readonly property var sensorPreset: sensorPresets.getPreset(sensors[0])
 	readonly property string sensorUnits: sensorData.getUnits(sensors[0])
+
 	property string valueUnits: sensorUnits
-	
 	property var legendLabels: []
 
 	property int padding: 4 * units.devicePixelRatio

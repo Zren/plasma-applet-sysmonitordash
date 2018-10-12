@@ -169,47 +169,25 @@ Kicker.DashboardWindow {
 					model: config.sensorModel
 
 					SensorGraph {
-						icon: modelData.icon || sensorPreset.icon || ""
-						iconOverlays: modelData.iconOverlays || sensorPreset.iconOverlays || []
+						icon: getSensorData('icon', "")
+						iconOverlays: getSensorData('iconOverlays', [])
 						sensors: modelData.sensors || []
-						colors: modelData.colors || sensorPreset.colors || []
-						defaultMax: modelData.defaultMax || sensorPreset.defaultMax || 0
-						label: modelData.label || sensorPreset.label || ""
-						sublabel: modelData.sublabel || sensorPreset.sublabel || ""
+						colors: getSensorData('colors', [])
+						defaultMax: getSensorData('defaultMax', 0)
+						label: getSensorData('label', "")
+						sublabel: getSensorData('sublabel', "")
 						valueUnits: modelData.units || sensorUnits
 
-						property var sensorPreset: {
-							var sensorName = modelData.sensors[0]
-
-							var match = sensorName.match(/^lmsensors\/((.+)\/(fan\d+))$/)
-							if (match) {
-								return {
-									icon: 'fan',
-									colors: ["#888"],
-									label: i18n("Fan"),
-									sublabel: match[1],
-									defaultMax: 2000,
+						function getSensorData(key, defaultValue) {
+							if (typeof modelData === "undefined" || typeof modelData[key] === "undefined") {
+								if (typeof sensorPreset === "undefined" || typeof sensorPreset[key] === "undefined") {
+									return defaultValue
+								} else {
+									return sensorPreset[key]
 								}
+							} else {
+								return modelData[key]
 							}
-
-							var match = sensorName.match(/^lmsensors\/((.+)\/(temp\d+))$/)
-							if (match) {
-								var tempPreset = {
-									colors: ["#800"],
-									label: i18n("Temp"),
-									sublabel: match[1],
-									defaultMax: 70,
-								}
-								var chipName = match[2]
-								if (chipName.match(/^radeon-/)) {
-									tempPreset.icon = 'amd-logo'
-									tempPreset.label = i18n("GPU")
-								}
-								
-								return tempPreset
-							}
-
-							return {}
 						}
 					}
 				}

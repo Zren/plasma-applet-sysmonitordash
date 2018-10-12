@@ -30,6 +30,10 @@ Item {
 		property var sensorModel: []
 	}
 
+	SensorPresets {
+		id: sensorPresets
+	}
+
 	function initJsonObjArr(configKey) {
 		// `plasmoid.configuration` is a QQmlPropertyMap
 		// https://github.com/KDE/plasma-framework/blob/master/src/scriptengines/qml/plasmoid/appletinterface.cpp#L161
