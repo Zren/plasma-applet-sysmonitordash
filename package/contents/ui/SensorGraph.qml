@@ -15,10 +15,8 @@ Item {
 	property alias label: plotter.label
 	property alias sublabel: plotter.sublabel
 	property alias valueLabel: plotter.valueLabel
-	property alias valueSublabel: plotter.valueSublabel
 	property alias maxYLabel: plotter.maxYLabel
 	property alias maxYVisible: maxYItem.visible
-	property alias valueFont: plotter.valueFont
 	property alias sensors: plotter.sensors
 	property alias values: plotter.values
 	property alias maxValue: plotter.maxValue
@@ -27,8 +25,11 @@ Item {
 	property alias stacked: plotter.stacked
 	property alias defaultMax: plotter.defaultMax
 	property alias valueUnits: plotter.units
+	
+	property var legendLabels: []
 
 	property int padding: 4 * units.devicePixelRatio
+	property int legendRadius: 6 * units.devicePixelRatio
 	
 
 	Layout.fillWidth: true
@@ -52,7 +53,6 @@ Item {
 		property string valueLabel: formatLabel(values[0], plotter.units)
 		property string valueSublabel: ''
 		property string maxYLabel: formatLabel(maxY, plotter.units)
-		property alias valueFont: valueLabel.font
 		property var sensors: []
 		property var values: []
 
@@ -153,17 +153,53 @@ Item {
 				topMargin: sensorGraph.padding
 			}
 		}
-		TextLabel {
-			id: maxYItem
+
+		Item {
+			id: legendArea
 			anchors {
-				left: parent.left
-				right: parent.right
+				left: labelItem.width > sublabelItem.width ? labelItem.right : sublabelItem.right
 				top: parent.top
+				bottom: parent.bottom
+				right: parent.right
+
+				leftMargin: sensorGraph.padding
 				topMargin: sensorGraph.padding
+				bottomMargin: sensorGraph.padding
+				rightMargin: sensorGraph.padding * 8
 			}
-			horizontalAlignment: Text.AlignHCenter
-			text: plotter.maxYLabel || ''
-			opacity: 0.75
+			// Rectangle { border.color: "#ff0"; anchors.fill: parent; color: "transparent"; border.width: 1}
+
+			Rectangle {
+				id: legendBackground
+				anchors.centerIn: legendItem
+				width: legendItem.width + sensorGraph.legendRadius*2
+				height: legendItem.height + sensorGraph.legendRadius*2
+				color: "#80000000"
+				radius: sensorGraph.legendRadius
+			}
+
+			TextLabel {
+				id: legendItem
+				anchors {
+					// top: parent.top
+					// topMargin: sensorGraph.padding
+
+					// horizontalCenter: maxYVisible ? parent.horizontalCenter : undefined
+					// centerIn: parent
+					verticalCenter: parent.verticalCenter
+					right: parent.right
+				}
+				text: plotter.valueLabel || ''
+
+				// Grow width based on contents, never shrink.
+				width: 0
+				onImplicitWidthChanged: {
+					if (width < implicitWidth) {
+						width = implicitWidth
+					}
+				}
+			}
+
 		}
 
 		TextLabel {
@@ -191,8 +227,7 @@ Item {
 		}
 
 		TextLabel {
-			id: valueLabel
-			wrapMode: Text.WordWrap
+			id: maxYItem
 			anchors {
 				right: parent.right
 				top: parent.top
@@ -200,24 +235,8 @@ Item {
 				topMargin: sensorGraph.padding
 			}
 			horizontalAlignment: Text.AlignRight
-			text: plotter.valueLabel || ''
-			
-			// Rectangle { border.color: "#ff0"; anchors.fill: parent; color: "transparent"; border.width: 1}
-		}
-
-		TextLabel {
-			id: valueSublabel
-			font: valueLabel.font
-			wrapMode: Text.WordWrap
-			anchors {
-				right: parent.right
-				top: valueLabel.bottom
-				rightMargin: sensorGraph.padding
-			}
-			horizontalAlignment: Text.AlignRight
-			text: plotter.valueSublabel || ''
-			
-			// Rectangle { border.color: "#ff0"; anchors.fill: parent; color: "transparent"; border.width: 1}
+			text: plotter.maxYLabel || ''
+			opacity: 0.75
 		}
 
 		Connections {

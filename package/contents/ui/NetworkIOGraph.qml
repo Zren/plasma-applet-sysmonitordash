@@ -4,6 +4,10 @@ SensorGraph {
 		"network/interfaces/" + interfaceName + "/receiver/data",
 		"network/interfaces/" + interfaceName + "/transmitter/data",
 	]
+	legendLabels: [
+		i18n("Download"),
+		i18n("Upload"),
+	]
 	colors: [
 		"#80b",
 		"#b08",

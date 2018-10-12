@@ -72,19 +72,7 @@ Kicker.DashboardWindow {
 					valueUnits: '%'
 					label: i18n("CPU")
 					sublabel: plasmoid.configuration.cpuSublabel || deviceData.processorProduct
-					valueFont.family: "Hack"
-					valueLabel: formatLabel(sensorData.cpuTotalLoad, '%')
-					valueSublabel: {
-						var s = ""
-						for (var i = 0; i < values.length; i++) {
-							if (i > 0) {
-								s += " | "
-							}
-							s += formatLabel(values[i], valueUnits)
-						}
-						return s
-					}
-					// valueSublabel: formatValuesLabel()
+					valueLabel: formatValuesLabel()
 					maxYVisible: false
 
 					function fixedWidth(x, n) {
@@ -107,6 +95,11 @@ Kicker.DashboardWindow {
 						"mem/physical/buf",
 						"mem/physical/application",
 					]
+					legendLabels: [
+						i18n("Cached"),
+						i18n("Buffered"),
+						i18n("Apps"),
+					]
 					defaultMax: sensorData.memTotal
 					stacked: true
 					colors: [
@@ -116,15 +109,17 @@ Kicker.DashboardWindow {
 					]
 					label: i18n("RAM")
 					sublabel: plasmoid.configuration.ramSublabel || humanReadableBits(sensorData.memTotal)
-					valueLabel: i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
-						Math.round(sensorData.memFreePercent),
-						Math.round(sensorData.memCachedPercent),
-						Math.round(sensorData.memBuffersPercent),
-						Math.round(sensorData.memAppsPercent))
+					// valueLabel: i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
+					// 	Math.round(sensorData.memFreePercent),
+					// 	Math.round(sensorData.memCachedPercent),
+					// 	Math.round(sensorData.memBuffersPercent),
+					// 	Math.round(sensorData.memAppsPercent))
+					valueLabel: formatValuesLabel() +
+						"<br>" + formatItem('transparent', i18n("Free"), sensorData.memFree, '')
 					maxYVisible: false
 
 					function formatLabel(value, units) {
-						return humanReadableBits(value)
+						return humanReadableBits(value) + " (" + Math.round(sensorData.memPercentage(value)) + "%)"
 					}
 				}
 
