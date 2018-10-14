@@ -108,7 +108,7 @@ Kicker.DashboardWindow {
 						"#336699",
 					]
 					label: i18n("RAM")
-					sublabel: plasmoid.configuration.ramSublabel || humanReadableBits(sensorData.memTotal)
+					sublabel: plasmoid.configuration.ramSublabel || humanReadableBytes(sensorData.memTotal)
 					// valueLabel: i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
 					// 	Math.round(sensorData.memFreePercent),
 					// 	Math.round(sensorData.memCachedPercent),
@@ -119,7 +119,7 @@ Kicker.DashboardWindow {
 					maxYVisible: false
 
 					function formatLabel(value, units) {
-						return humanReadableBits(value) + " (" + Math.round(sensorData.memPercentage(value)) + "%)"
+						return humanReadableBytes(value) + " (" + Math.round(sensorData.memPercentage(value)) + "%)"
 					}
 				}
 
@@ -137,13 +137,13 @@ Kicker.DashboardWindow {
 						"#1122aa22",
 					]
 					label: i18n("Swap")
-					sublabel: plasmoid.configuration.swapSublabel || humanReadableBits(sensorData.swapTotal)
+					sublabel: plasmoid.configuration.swapSublabel || humanReadableBytes(sensorData.swapTotal)
 					valueLabel: formatItem('transparent', i18n("Free"), sensorData.swapFree, '')
 						+ "<br>" + formatValuesLabel()
 					maxYVisible: false
 
 					function formatLabel(value, units) {
-						return humanReadableBits(value)
+						return humanReadableBytes(value)
 					}
 				}
 
@@ -198,14 +198,12 @@ Kicker.DashboardWindow {
 		
 	}
 
-
-	// humanReadableByteSize
-	function humanReadableBits(kibibytes) {
+	function humanReadableBytes(kibibytes) {
 		// https://github.com/KDE/kcoreaddons/blob/master/src/lib/util/kformat.h
 		return KCoreAddons.Format.formatByteSize(kibibytes * 1024)
 	}
 
-	// function humanReadableBits(kibibytes) {
+	// function humanReadableBytes(kibibytes) {
 	// 	var kilobytes = kibibytes / 1024 * 1000
 	// 	if (kilobytes > 1000000000) {
 	// 		return i18n("%1 TB", Math.round(kilobytes/1000000000))

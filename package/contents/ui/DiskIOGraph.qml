@@ -17,6 +17,6 @@ SensorGraph {
 	valueLabel: formatValuesLabel()
 
 	function formatLabel(value, units) {
-		return humanReadableBits(value)
+		return humanReadableBytes(value)
 	}
 }
