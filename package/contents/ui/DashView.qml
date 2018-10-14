@@ -2,7 +2,7 @@ import QtQuick 2.1
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.1
 
-// import org.kde.kcoreaddons 1.0 as KCoreAddons
+import org.kde.kcoreaddons 1.0 as KCoreAddons
 import org.kde.plasma.private.kicker 0.1 as Kicker
 
 Kicker.DashboardWindow {
@@ -198,17 +198,23 @@ Kicker.DashboardWindow {
 		
 	}
 
-	function humanReadableBits(kilobits) {
-		// return KCoreAddons.Format.formatByteSize(kilobits * 1024);
 
-		if (kilobits > 1000000000) {
-			return i18n("%1 TB", Math.round(kilobits/1000000000))
-		} else if (kilobits > 1000000) {
-			return i18n("%1 GB", Math.round(kilobits/1000000))
-		} else if (kilobits > 1000) {
-			return i18n("%1 MB", Math.round(kilobits/1000))
-		} else {
-			return i18n("%1 KB", Math.round(kilobits))
-		}
+	// humanReadableByteSize
+	function humanReadableBits(kibibytes) {
+		// https://github.com/KDE/kcoreaddons/blob/master/src/lib/util/kformat.h
+		return KCoreAddons.Format.formatByteSize(kibibytes * 1024)
 	}
+
+	// function humanReadableBits(kibibytes) {
+	// 	var kilobytes = kibibytes / 1024 * 1000
+	// 	if (kilobytes > 1000000000) {
+	// 		return i18n("%1 TB", Math.round(kilobytes/1000000000))
+	// 	} else if (kilobytes > 1000000) {
+	// 		return i18n("%1 GB", Math.round(kilobytes/1000000))
+	// 	} else if (kilobytes > 1000) {
+	// 		return i18n("%1 MB", Math.round(kilobytes/1000))
+	// 	} else {
+	// 		return i18n("%1 KB", Math.round(kilobytes))
+	// 	}
+	// }
 }
