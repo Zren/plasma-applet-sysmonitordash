@@ -34,6 +34,7 @@ Item {
 	property int padding: 4 * units.devicePixelRatio
 	property int legendRadius: 6 * units.devicePixelRatio
 	
+	property color textColor: "#eeeff0"
 
 	Layout.fillWidth: true
 	Layout.preferredHeight: 120 * units.devicePixelRatio
@@ -193,6 +194,7 @@ Item {
 					right: parent.right
 				}
 				text: plotter.valueLabel || ''
+				color: sensorGraph.textColor
 
 				// Grow width based on contents, never shrink.
 				width: 0
@@ -213,6 +215,7 @@ Item {
 				topMargin: sensorGraph.padding
 			}
 			text: plotter.label || ''
+			color: sensorGraph.textColor
 
 			// Rectangle { border.color: "#0f0"; anchors.fill: parent; color: "transparent"; border.width: 1}
 		}
@@ -224,6 +227,7 @@ Item {
 				rightMargin: sensorGraph.padding
 			}
 			text: plotter.sublabel || ''
+			color: sensorGraph.textColor
 			opacity: 0.75
 
 			// Rectangle { border.color: "#ff0"; anchors.fill: parent; color: "transparent"; border.width: 1}
@@ -239,6 +243,7 @@ Item {
 			}
 			horizontalAlignment: Text.AlignRight
 			text: plotter.maxYLabel || ''
+			color: sensorGraph.textColor
 			opacity: 0.75
 		}
 
