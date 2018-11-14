@@ -27,7 +27,7 @@ TableViewColumn {
 			}
 		}
 
-		implicitWidth: 200 * units.devicePixelRatio
+		implicitWidth: 300 * units.devicePixelRatio
 
 		function selectCurrentItem() {
 			if (cellValue && cellValue.length >= 1) {
