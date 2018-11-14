@@ -52,6 +52,10 @@ ColumnLayout {
 			resizeColumnsToContents()
 		}
 
+		JsonTableSensor {
+			role: "sensors"
+			title: i18n("Sensor")
+		}
 		JsonTableString {
 			role: "label"
 			title: i18n("Label")
@@ -59,10 +63,6 @@ ColumnLayout {
 		JsonTableString {
 			role: "sublabel"
 			title: i18n("SubLabel")
-		}
-		JsonTableSensor {
-			role: "sensors"
-			title: i18n("Sensor")
 		}
 		JsonTableStringList {
 			role: "colors"
