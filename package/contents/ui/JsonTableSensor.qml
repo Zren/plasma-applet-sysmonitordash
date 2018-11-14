@@ -12,24 +12,45 @@ TableViewColumn {
 		model: sensorDetector.model
 		textRole: 'name'
 
+		function hasKey() {
+			return (typeof tableView.model[styleData.row] !== "undefined"
+				&& typeof tableView.model[styleData.row][tableViewColumn.role] !== "undefined"
+			)
+		}
+
+		readonly property var cellValue: {
+			// console.log('Sensor.cellValue', hasKey(), tableView.model[styleData.row][tableViewColumn.role])
+			if (hasKey()) {
+				return tableView.model[styleData.row][tableViewColumn.role]
+			} else {
+				return []
+			}
+		}
+
 		implicitWidth: 200 * units.devicePixelRatio
 
 		function selectCurrentItem() {
-			if (styleData.value && styleData.value.length >= 1) {
-				var i = comboBox.find(styleData.value[0])
+			if (cellValue && cellValue.length >= 1) {
+				var i = comboBox.find(cellValue[0])
 				if (i >= 0) {
 					comboBox.currentIndex = i
 				}
 			}
 		}
 
-		Component.onCompleted: selectCurrentItem()
-		onModelChanged: selectCurrentItem()
+		// Note: sensorDetector.model is not populated during Component.onCompleted
+		// Note: sensorDetector.model is fired with an empty list []
+		onModelChanged: {
+			// console.log('sensorDetector.onModelChanged', sensorDetector.model)
+			if (count > 0) {
+				selectCurrentItem()
+			}
+		}
 
 		onCurrentIndexChanged: {
 			if (currentIndex <= 0) {
 				return // skip
-			} else if (styleData.value && styleData.value.length >= 1 && currentText == styleData.value[0]) {
+			} else if (cellValue && cellValue.length >= 1 && currentText == cellValue[0]) {
 				return // skip
 			} else {
 				tableView.model[styleData.row][tableViewColumn.role] = [currentText]
