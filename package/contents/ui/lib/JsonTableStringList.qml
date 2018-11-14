@@ -7,7 +7,11 @@ TableViewColumn {
 
 	movable: false
 
+	property string placeholderText: ""
+
 	delegate: JsonTableTextField {
+		placeholderText: tableViewColumn.placeholderText
+
 		function hasKey() {
 			return (typeof tableView.model[styleData.row] !== "undefined"
 				&& typeof tableView.model[styleData.row][tableViewColumn.role] !== "undefined"

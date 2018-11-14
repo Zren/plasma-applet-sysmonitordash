@@ -164,6 +164,7 @@ ColumnLayout {
 		JsonTableStringList {
 			role: "colors"
 			title: i18n("Color")
+			placeholderText: "#000000"
 		}
 		JsonTableString {
 			role: "icon"

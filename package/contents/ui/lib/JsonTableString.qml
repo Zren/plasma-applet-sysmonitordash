@@ -7,7 +7,9 @@ TableViewColumn {
 
 	movable: false
 
-	delegate: JsonTableTextField {
+	property string placeholderText: ""
 
+	delegate: JsonTableTextField {
+		placeholderText: tableViewColumn.placeholderText
 	}
 }

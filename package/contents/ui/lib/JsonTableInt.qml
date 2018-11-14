@@ -7,7 +7,11 @@ TableViewColumn {
 
 	movable: false
 
+	property string placeholderText: ""
+
 	delegate: JsonTableTextField {
+		placeholderText: tableViewColumn.placeholderText
+
 		function setterValue() {
 			return parseInt(text, 10)
 		}
