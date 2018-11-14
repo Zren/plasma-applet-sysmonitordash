@@ -23,7 +23,7 @@ QtObject {
 				defaultMax: 70,
 			}
 			var chipName = match[2]
-			if (chipName.match(/^radeon-/)) {
+			if (chipName.match(/^radeon-/) || chipName.match(/^amdgpu-/)) {
 				tempPreset.icon = 'amd-logo'
 				tempPreset.label = i18n("GPU")
 			}
