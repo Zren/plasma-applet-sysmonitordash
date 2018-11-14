@@ -281,8 +281,13 @@ Item {
 				visible: mouseArea.containsMouse
 				text: ""
 
+				// minX + maxX workaround the bug where the tooltip appears on the
+				// other side of the graph when it would hit the edge of the screen.
 				property int cursorMargin: 3
-				x: mouseArea.mouseX - implicitWidth / 2
+				property int centerCursorX: mouseArea.mouseX - implicitWidth / 2
+				property int minX: 8 * units.devicePixelRatio
+				property int maxX: mouseArea.width - implicitWidth - minX
+				x: Math.max(minX, Math.min(centerCursorX, maxX))
 				y: mouseArea.height + cursorMargin
 
 				onVisibleChanged: {
