@@ -34,11 +34,28 @@ ColumnLayout {
 		// readonly property string jsonValue: JSON.stringify(valueObj, null, '  ')
 	}
 
-	RowLayout {
+	Flow {
+		Layout.fillWidth: true
+		
 		Button {
 			iconName: "edit-table-insert-row-below"
 			text: i18n("Add Sensor")
 			onClicked: tableView.addRow()
+		}
+		Button {
+			iconName: "edit-table-insert-row-below"
+			text: i18n("Add Temps")
+			onClicked: tableView.addAllTemps()
+		}
+		Button {
+			iconName: "edit-table-insert-row-below"
+			text: i18n("Add Fans")
+			onClicked: tableView.addAllFans()
+		}
+		Button {
+			iconName: "edit-table-insert-row-below"
+			text: i18n("Add all lm_sensors")
+			onClicked: tableView.addAllLmSensors()
 		}
 	}
 
@@ -53,22 +70,72 @@ ColumnLayout {
 			plasmoid.configuration.sensorModel = newValue
 		}
 
-		function addRow() {
-			tableView.model.push({})
-			tableView.modelChanged()
-			updateConfigValue()
+		function indexOfSensor(sensorName) {
+			for (var rowIndex = 0; rowIndex < tableView.model.length; rowIndex++) {
+				var row = tableView.model[rowIndex]
+				if (typeof row.sensors !== "undefined") {
+					for (var i = 0; i < row.sensors.length; i++) {
+						if (row.sensors[i] == sensorName) {
+							return rowIndex
+						}
+					}
+				}
+			}
+			return -1
 		}
 
-		function removeRow(rowIndex) {
-			tableView.model.splice(rowIndex, 1)
-			tableView.modelChanged()
-			updateConfigValue()
+		function hasRowWithSensor(sensorName) {
+			return indexOfSensor(sensorName) >= 0
+		}
+
+		function addAllSensors(predicate) {
+			var rowAdded = false
+			var sensors = sensorDetector.model
+			for (var i = 0; i < sensors.count; i++) {
+				var sensor = sensors.get(i)
+				var shouldAdd = predicate(sensor.name)
+				if (shouldAdd) {
+					console.log('sensorAdded', i, sensor.name)
+					var newLength = tableView.model.push({
+						sensors: [sensor.name]
+					})
+					var newIndex = newLength - 1
+					console.log('\t', newIndex, JSON.stringify(tableView.model[newIndex]))
+					// tableView.rowAdded(newIndex) // it only calls updateConfigValue()
+					rowAdded = true
+				}
+			}
+			if (rowAdded) {
+				tableView.modelChanged()
+				updateConfigValue()
+			}
+		}
+
+		function addAllRegex(regex) {
+			tableView.addAllSensors(function(sensorName){
+				return sensorName.match(regex)
+					&& !tableView.hasRowWithSensor(sensorName)
+			})
+		}
+
+		function addAllTemps() {
+			tableView.addAllRegex(/^lmsensors\/.+\/temp\d+$/)
+		}
+		
+		function addAllFans() {
+			tableView.addAllRegex(/^lmsensors\/.+\/fan\d+$/)
+		}
+
+		function addAllLmSensors() {
+			tableView.addAllRegex(/^lmsensors\//)
 		}
 
 		onCellChanged: {
 			updateConfigValue()
 			resizeColumnsToContents()
 		}
+		onRowAdded: updateConfigValue()
+		onRowRemoved: updateConfigValue()
 
 		Component.onCompleted: {
 			tableView.model = sensorModel.getter()
