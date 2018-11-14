@@ -30,7 +30,7 @@ TableViewColumn {
 		implicitWidth: 300 * units.devicePixelRatio
 
 		function selectCurrentItem() {
-			if (cellValue && cellValue.length >= 1) {
+			if (count > 0 && cellValue && cellValue.length >= 1) {
 				var i = comboBox.find(cellValue[0])
 				if (i >= 0) {
 					comboBox.currentIndex = i
@@ -39,12 +39,14 @@ TableViewColumn {
 		}
 
 		// Note: sensorDetector.model is not populated during Component.onCompleted
-		// Note: sensorDetector.model is fired with an empty list []
+		// Note: sensorDetector.modelChanged is fired with an empty list []
 		onModelChanged: {
 			// console.log('sensorDetector.onModelChanged', sensorDetector.model)
-			if (count > 0) {
-				selectCurrentItem()
-			}
+			selectCurrentItem()
+		}
+		Component.onCompleted: {
+			// console.log('ComboBox.onCompleted', sensorDetector.model)
+			selectCurrentItem()
 		}
 		onCellValueChanged: {
 			// console.log('ComboBox.onCellValueChanged', cellValue)
