@@ -176,7 +176,7 @@ ColumnLayout {
 		}
 		JsonTableInt {
 			role: "defaultMax"
-			title: i18n("Max")
+			title: i18n("MaxY")
 		}
 	}
 }
