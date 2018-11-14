@@ -4,8 +4,23 @@ import QtQuick.Layouts 1.0
 
 TextField {
 	id: textField
+
+	function hasKey() {
+		return (typeof tableView.model[styleData.row] !== "undefined"
+			&& typeof tableView.model[styleData.row][tableViewColumn.role] !== "undefined"
+		)
+	}
+
+	readonly property var cellValue: {
+		if (hasKey()) {
+			return tableView.model[styleData.row][tableViewColumn.role]
+		} else {
+			return ''
+		}
+	}
+	
 	function getter() {
-		return (styleData.value || '')
+		return cellValue || ''
 	}
 	function setterValue() {
 		return text
