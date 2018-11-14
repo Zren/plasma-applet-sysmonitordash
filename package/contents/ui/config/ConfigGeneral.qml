@@ -24,6 +24,13 @@ ColumnLayout {
 				return ""
 			}
 		}
+		function getter() {
+			try {
+				return JSON.parse(plasmoid.configuration.sensorModel)
+			} catch (err) {
+				return ""
+			}
+		}
 		// readonly property string jsonValue: JSON.stringify(valueObj, null, '  ')
 	}
 
@@ -32,16 +39,18 @@ ColumnLayout {
 		Layout.fillWidth: true
 		Layout.fillHeight: true
 
-		model: sensorModel.valueObj
-
 		onCellChanged: {
 			sensorModel.valueObjChanged()
-			var newValue = JSON.stringify(sensorModel.valueObj, null, '  ')
+			var newValue = JSON.stringify(tableView.model, null, '  ')
 			plasmoid.configuration.sensorModel = newValue
 
 			resizeColumnsToContents()
 		}
-		Component.onCompleted: resizeColumnsToContents()
+
+		Component.onCompleted: {
+			tableView.model = sensorModel.getter()
+			resizeColumnsToContents()
+		}
 
 		JsonTableString {
 			role: "label"
