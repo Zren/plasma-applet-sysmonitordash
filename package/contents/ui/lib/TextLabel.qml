@@ -5,5 +5,4 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 // https://github.com/KDE/plasma-framework/blob/master/src/declarativeimports/plasmacomponents/qml/Label.qml
 PlasmaComponents.Label {
 	height: paintedHeight // Plasma sets the minHeight to 1.6*fontHeight
-	color: "#eeeff0"
 }
