@@ -8,8 +8,22 @@ TableViewColumn {
 	movable: false
 
 	delegate: JsonTableTextField {
+		function hasKey() {
+			return (typeof tableView.model[styleData.row] !== "undefined"
+				&& typeof tableView.model[styleData.row][tableViewColumn.role] !== "undefined"
+			)
+		}
+
+		readonly property var cellValue: {
+			if (hasKey()) {
+				return tableView.model[styleData.row][tableViewColumn.role]
+			} else {
+				return ''
+			}
+		}
 		function getter() {
-			return (styleData.value || '').join(',')
+			// console.log('StringList.getter', cellValue)
+			return cellValue ? cellValue.join(',') : ''
 		}
 
 		function setterValue() {
