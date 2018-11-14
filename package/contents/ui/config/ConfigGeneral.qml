@@ -14,20 +14,34 @@ ColumnLayout {
 		id: sensorDetector
 	}
 
+	QtObject {
+		id: sensorModel
+		readonly property string configValue: plasmoid.configuration.sensorModel
+		readonly property var valueObj: {
+			try {
+				return JSON.parse(configValue)
+			} catch (err) {
+				return ""
+			}
+		}
+		// readonly property string jsonValue: JSON.stringify(valueObj, null, '  ')
+	}
+
 	JsonTableView {
 		id: tableView
 		Layout.fillWidth: true
 		Layout.fillHeight: true
 
+		model: sensorModel.valueObj
+
 		onCellChanged: {
-			// textArea.valueObjChanged()
-			textArea.jsonValue = JSON.stringify(textArea.valueObj, null, '  ')
-			textArea.jsonValueChanged()
-			plasmoid.configuration.sensorModel = textArea.jsonValue
+			sensorModel.valueObjChanged()
+			var newValue = JSON.stringify(sensorModel.valueObj, null, '  ')
+			plasmoid.configuration.sensorModel = newValue
+
 			resizeColumnsToContents()
 		}
-
-		model: textArea.valueObj
+		Component.onCompleted: resizeColumnsToContents()
 
 		JsonTableString {
 			role: "label"
@@ -57,30 +71,5 @@ ColumnLayout {
 			role: "defaultMax"
 			title: i18n("Max")
 		}
-	}
-
-	TextArea {
-		id: textArea
-		// visible: false
-		Layout.fillWidth: true
-		Layout.fillHeight: true
-		property bool updateOnChange: true
-		property string value: plasmoid.configuration.sensorModel
-
-		property var valueObj: {
-			try {
-				return JSON.parse(value)
-			} catch (err) {
-				return ""
-			}
-		}
-		property string jsonValue: JSON.stringify(valueObj, null, '  ')
-
-		onJsonValueChanged: {
-			text = JSON.stringify(valueObj, null, '  ')
-		}
-
-		text: jsonValue
-
 	}
 }
