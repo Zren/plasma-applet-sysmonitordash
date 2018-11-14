@@ -34,22 +34,52 @@ ColumnLayout {
 		// readonly property string jsonValue: JSON.stringify(valueObj, null, '  ')
 	}
 
+	RowLayout {
+		Button {
+			iconName: "edit-table-insert-row-below"
+			text: i18n("Add Sensor")
+			onClicked: tableView.addRow()
+		}
+	}
+
 	JsonTableView {
 		id: tableView
 		Layout.fillWidth: true
 		Layout.fillHeight: true
 
-		onCellChanged: {
+		function updateConfigValue() {
 			sensorModel.valueObjChanged()
 			var newValue = JSON.stringify(tableView.model, null, '  ')
 			plasmoid.configuration.sensorModel = newValue
+		}
 
+		function addRow() {
+			tableView.model.push({})
+			tableView.modelChanged()
+			updateConfigValue()
+		}
+
+		function removeRow(rowIndex) {
+			tableView.model.splice(rowIndex, 1)
+			tableView.modelChanged()
+			updateConfigValue()
+		}
+
+		onCellChanged: {
+			updateConfigValue()
 			resizeColumnsToContents()
 		}
 
 		Component.onCompleted: {
 			tableView.model = sensorModel.getter()
 			resizeColumnsToContents()
+		}
+
+		TableViewColumn {
+			delegate: Button {
+				iconName: "delete"
+				onClicked: tableView.removeRow(styleData.row)
+			}
 		}
 
 		JsonTableSensor {
