@@ -46,6 +46,10 @@ TableViewColumn {
 				selectCurrentItem()
 			}
 		}
+		onCellValueChanged: {
+			// console.log('ComboBox.onCellValueChanged', cellValue)
+			selectCurrentItem()
+		}
 
 		onCurrentIndexChanged: {
 			if (currentIndex <= 0) {
