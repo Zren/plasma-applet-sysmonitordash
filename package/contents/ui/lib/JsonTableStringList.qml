@@ -27,7 +27,15 @@ TableViewColumn {
 		}
 
 		function setterValue() {
-			return text.split(',')
+			if (text) {
+				return text.split(',')
+			} else {
+				if (hasKey()) {
+					return []
+				} else {
+					return undefined
+				}
+			}
 		}
 	}
 }
