@@ -27,9 +27,17 @@ TextField {
 	}
 
 	text: getter()
-	onTextChanged: {
-		tableView.model[styleData.row][tableViewColumn.role] = setterValue()
-		tableView.cellChanged(styleData.row, styleData.column, tableViewColumn.role)
+
+	function doValueChange() {
+		var newValue = setterValue()
+		if (tableView.model[styleData.row][tableViewColumn.role] != newValue) {
+			tableView.model[styleData.row][tableViewColumn.role] = newValue
+			tableView.cellChanged(styleData.row, styleData.column, tableViewColumn.role)
+		}
+	}
+	// onTextChanged: {}
+	onEditingFinished: {
+		doValueChange()
 	}
 	onFocusChanged: {
 		if (focus) {
