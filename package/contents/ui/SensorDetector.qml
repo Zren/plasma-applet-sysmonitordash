@@ -17,9 +17,9 @@ QtObject {
 		//       another DataSource instance, like in our SensorData instance,
 		//       will not have onSourceAdded called for that sensor.
 		onSourcesChanged: {
-			// console.log('sensorDetector.dataSource.sources', sources)
+			// console.log('sensorDetector.dataSource.sources', dataSource.sources)
 			privateModel.clear()
-			for (var i = 0; i < sources.length; i++) {
+			for (var i = 0; i < dataSource.sources.length; i++) {
 				var sourceName = sources[i]
 				privateModel.append({
 					name: sourceName
