@@ -1,0 +1,165 @@
+# Translation of sysmonitordash in LANGUAGE
+# Copyright (C) 2018
+# This file is distributed under the same license as the sysmonitordash package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sysmonitordash \n"
+"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
+"POT-Creation-Date: 2018-11-14 21:05-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contents/config/config.qml:26
+msgid "Sensors"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:42
+msgid "Add Sensor"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:47
+msgid "Add Temps"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:52
+msgid "Add Fans"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:57
+msgid "Add all lm_sensors"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:154
+msgid "Sensor"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:158
+msgid "Label"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:162
+msgid "SubLabel"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:166
+msgid "Color"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:171
+msgid "Icon"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:175
+msgid "Units"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:179
+msgid "MaxY"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:73
+msgid "CPU"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:99
+msgid "Cached"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:100
+msgid "Buffered"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:101
+msgid "Apps"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:110
+msgid "RAM"
+msgstr ""
+
+#. i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
+#. Math.round(sensorData.memFreePercent),
+#. Math.round(sensorData.memCachedPercent),
+#. Math.round(sensorData.memBuffersPercent),
+#. Math.round(sensorData.memAppsPercent))
+#: ../contents/ui/DashView.qml:117 ../contents/ui/DashView.qml:141
+msgid "Free"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:132
+msgid "Used"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:139
+msgid "Swap"
+msgstr ""
+
+#: ../contents/ui/DiskIOGraph.qml:8
+msgid "Read"
+msgstr ""
+
+#: ../contents/ui/DiskIOGraph.qml:9
+msgid "Write"
+msgstr ""
+
+#: ../contents/ui/lib/AppletVersion.qml:41
+msgid "<b>Version:</b> %1"
+msgstr ""
+
+#: ../contents/ui/ListBlockDevices.qml:37
+msgid "Disk: %1"
+msgstr ""
+
+#: ../contents/ui/ListBlockDevices.qml:38
+msgctxt "diskModel sizeGb"
+msgid "%1 %2"
+msgstr ""
+
+#: ../contents/ui/main.qml:69
+msgid "Start Task Manager"
+msgstr ""
+
+#: ../contents/ui/NetworkIOGraph.qml:8
+msgid "Download"
+msgstr ""
+
+#: ../contents/ui/NetworkIOGraph.qml:9
+msgid "Upload"
+msgstr ""
+
+#: ../contents/ui/NetworkIOGraph.qml:15 ../contents/ui/NetworkListDetector.qml:51
+msgid "Network"
+msgstr ""
+
+#: ../contents/ui/NetworkListDetector.qml:48
+msgid "Wi-Fi"
+msgstr ""
+
+#: ../contents/ui/PartitionUsageBar.qml:17
+msgid "<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4"
+msgstr ""
+
+#: ../contents/ui/SensorGraph.qml:335
+msgctxt "%1 is data value, %2 is unit datatype"
+msgid "%1 %2"
+msgstr ""
+
+#: ../contents/ui/SensorPresets.qml:10
+msgid "Fan"
+msgstr ""
+
+#: ../contents/ui/SensorPresets.qml:21
+msgid "Temp"
+msgstr ""
+
+#: ../contents/ui/SensorPresets.qml:28
+msgid "GPU"
+msgstr ""
