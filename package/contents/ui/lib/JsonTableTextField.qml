@@ -29,8 +29,9 @@ TextField {
 	text: getter()
 
 	function doValueChange() {
+		var oldValue = tableView.model[styleData.row][tableViewColumn.role]
 		var newValue = setterValue()
-		if (tableView.model[styleData.row][tableViewColumn.role] != newValue) {
+		if (oldValue != newValue) {
 			tableView.model[styleData.row][tableViewColumn.role] = newValue
 			tableView.cellChanged(styleData.row, styleData.column, tableViewColumn.role)
 		}
