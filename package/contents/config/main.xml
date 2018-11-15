@@ -25,6 +25,35 @@
 		</entry>
 
 		<entry name="sensorModel" type="string">
+			<!--
+			<default>
+[
+	{
+		"icon": "cpu",
+		"sensors": ["lmsensors/it8720-isa-0228/temp1"],
+		"label": "CPU",
+		"sublabel": "AMD Phenom 960T"
+	},
+	{
+		"sensors": ["lmsensors/it8720-isa-0228/fan1"],
+		"label": "Fan: CPU"
+	},
+	{
+		"icon": "amd-logo",
+		"sensors": ["lmsensors/amdgpu-pci-0100/temp1"],
+		"sublabel": "AMD Radeon r7 370"
+	},
+	{
+		"sensors": ["lmsensors/amdgpu-pci-0100/fan1"],
+		"label": "Fan: AMD Radeon r7 370"
+	},
+	{
+		"sensors": ["lmsensors/it8720-isa-0228/fan3"],
+		"label": "Fan: Rear Exaust"
+	}
+]
+			</default>
+			-->
 			<default>[]</default>
 		</entry>
 
