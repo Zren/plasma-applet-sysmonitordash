@@ -179,7 +179,7 @@ Kicker.DashboardWindow {
 						valueUnits: modelData.units || sensorUnits
 
 						function getSensorData(key, defaultValue) {
-							if (typeof modelData === "undefined" || typeof modelData[key] === "undefined") {
+							if (typeof modelData === "undefined" || !modelData[key]) {
 								if (typeof sensorPreset === "undefined" || typeof sensorPreset[key] === "undefined") {
 									return defaultValue
 								} else {
