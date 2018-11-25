@@ -385,10 +385,14 @@ Item {
 
 
 	function stripAlpha(c) {
-		if (typeof(c) == "string") {
-			c = Qt.tint(c, "transparent")
+		if (c) {
+			if (typeof(c) == "string") {
+				c = Qt.tint(c, "transparent")
+			}
+			return Qt.rgba(c.r, c.g, c.b, 1)
+		} else {
+			return Qt.rgba(0, 0, 0, 1)
 		}
-		return Qt.rgba(c.r, c.g, c.b, 1)
 	}
 
 	function formatLegend(valueIndex) {
