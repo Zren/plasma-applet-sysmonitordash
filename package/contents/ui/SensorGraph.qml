@@ -187,7 +187,8 @@ Item {
 				id: legendGridLayout
 				rowSpacing: 0
 				columnSpacing: units.largeSpacing
-				columns: Math.ceil(values.length / 3)
+				columns: Math.ceil(itemCount / 4)
+				readonly property int itemCount: legendRepeaterBefore.count + legendRepeater.count
 
 				anchors {
 					// top: parent.top
@@ -200,8 +201,9 @@ Item {
 				}
 
 				Repeater {
+					id: legendRepeaterBefore
 					model: legendItemsBefore
-					Label {
+					TextLabel {
 						text: modelData
 						color: sensorGraph.textColor
 
@@ -216,8 +218,9 @@ Item {
 				}
 
 				Repeater {
+					id: legendRepeater
 					model: values.length
-					Label {
+					TextLabel {
 						text: {
 							var label = (index < legendLabels.length) ? legendLabels[index] : ''
 							return formatItem(colors[index % colors.length], label, values[index], valueUnits)
