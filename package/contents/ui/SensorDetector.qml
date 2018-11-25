@@ -18,12 +18,12 @@ QtObject {
 		//       another DataSource instance, like in our SensorData instance,
 		//       will not have onSourceAdded called for that sensor.
 		onSourcesChanged: {
-			console.log('sensorDetector.dataSource.onSourcesChanged', dataSource.sources)
+			// console.log('sensorDetector.dataSource.onSourcesChanged', dataSource.sources)
 			sensorDetector.updateModel()
 			
 		}
 		Component.onCompleted: {
-			console.log('sensorDetector.dataSource.sources', dataSource.sources)
+			// console.log('sensorDetector.dataSource.sources', dataSource.sources)
 			sensorDetector.updateModel()
 		}
 	}
