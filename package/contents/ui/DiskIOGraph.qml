@@ -14,7 +14,6 @@ SensorGraph {
 	]
 	label: "Disk"
 	sublabel: partitionId
-	valueLabel: formatValuesLabel()
 
 	function formatLabel(value, units) {
 		return humanReadableBytes(value)

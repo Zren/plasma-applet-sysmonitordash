@@ -72,7 +72,6 @@ Kicker.DashboardWindow {
 					]
 					label: i18n("CPU")
 					sublabel: plasmoid.configuration.cpuSublabel || deviceData.processorProduct
-					valueLabel: formatValuesLabel()
 					maxYVisible: false
 
 					function fixedWidth(x, n) {
@@ -112,13 +111,6 @@ Kicker.DashboardWindow {
 					]
 					label: i18n("RAM")
 					sublabel: plasmoid.configuration.ramSublabel || humanReadableBytes(sensorData.memTotal)
-					// valueLabel: i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
-					// 	Math.round(sensorData.memFreePercent),
-					// 	Math.round(sensorData.memCachedPercent),
-					// 	Math.round(sensorData.memBuffersPercent),
-					// 	Math.round(sensorData.memAppsPercent))
-					valueLabel: formatItem('transparent', i18n("Free"), sensorData.memFree, '')
-						+ "<br>" + formatValuesLabel()
 					maxYVisible: false
 
 					function formatLabel(value, units) {
@@ -134,6 +126,9 @@ Kicker.DashboardWindow {
 					legendLabels: [
 						i18n("Used"),
 					]
+					legendItemsBefore: [
+						formatItem('transparent', i18n("Free"), sensorData.swapFree, ''),
+					]
 					defaultMax: sensorData.swapTotal
 					stacked: true
 					colors: [
@@ -141,8 +136,6 @@ Kicker.DashboardWindow {
 					]
 					label: i18n("Swap")
 					sublabel: plasmoid.configuration.swapSublabel || humanReadableBytes(sensorData.swapTotal)
-					valueLabel: formatItem('transparent', i18n("Free"), sensorData.swapFree, '')
-						+ "<br>" + formatValuesLabel()
 					maxYVisible: false
 
 					function formatLabel(value, units) {

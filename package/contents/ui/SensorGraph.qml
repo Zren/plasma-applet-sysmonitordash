@@ -14,7 +14,6 @@ Item {
 	property alias iconOverlays: plotter.iconOverlays
 	property alias label: plotter.label
 	property alias sublabel: plotter.sublabel
-	property alias valueLabel: plotter.valueLabel
 	property alias maxYLabel: plotter.maxYLabel
 	property alias maxYVisible: maxYItem.visible
 	property alias sensors: plotter.sensors
@@ -55,7 +54,6 @@ Item {
 		property alias iconOverlays: iconItem.overlays
 		property string label: ''
 		property string sublabel: ''
-		property string valueLabel: formatLabel(values[0], plotter.units)
 		property string valueSublabel: ''
 		property string maxYLabel: formatLabel(maxY, plotter.units)
 		property var sensors: []

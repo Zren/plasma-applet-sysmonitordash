@@ -14,7 +14,6 @@ SensorGraph {
 	]
 	label: i18n("Network")
 	sublabel: interfaceName
-	valueLabel: formatValuesLabel()
 	
 	function formatLabel(value, units) {
 		return humanReadableBytes(value)
