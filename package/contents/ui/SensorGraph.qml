@@ -30,6 +30,7 @@ Item {
 
 	property string valueUnits: sensorUnits
 	property var legendLabels: []
+	property var legendItemsBefore: []
 
 	property int padding: 4 * units.devicePixelRatio
 	property int legendRadius: 6 * units.devicePixelRatio
@@ -175,15 +176,19 @@ Item {
 
 			Rectangle {
 				id: legendBackground
-				anchors.centerIn: legendItem
-				width: legendItem.width + sensorGraph.legendRadius*2
-				height: legendItem.height + sensorGraph.legendRadius*2
+				anchors.centerIn: legendGridLayout
+				width: legendGridLayout.width + sensorGraph.legendRadius*2
+				height: legendGridLayout.height + sensorGraph.legendRadius*2
 				color: "#80000000"
 				radius: sensorGraph.legendRadius
 			}
 
-			TextLabel {
-				id: legendItem
+			GridLayout {
+				id: legendGridLayout
+				rowSpacing: 0
+				columnSpacing: units.largeSpacing
+				columns: Math.ceil(values.length / 3)
+
 				anchors {
 					// top: parent.top
 					// topMargin: sensorGraph.padding
@@ -193,16 +198,42 @@ Item {
 					verticalCenter: parent.verticalCenter
 					right: parent.right
 				}
-				text: plotter.valueLabel || ''
-				color: sensorGraph.textColor
 
-				// Grow width based on contents, never shrink.
-				width: 0
-				onImplicitWidthChanged: {
-					if (width < implicitWidth) {
-						width = implicitWidth
+				Repeater {
+					model: legendItemsBefore
+					Label {
+						text: modelData
+						color: sensorGraph.textColor
+
+						// Grow width based on contents, never shrink.
+						Layout.preferredWidth: 0
+						onImplicitWidthChanged: {
+							if (Layout.preferredWidth < implicitWidth) {
+								Layout.preferredWidth = implicitWidth
+							}
+						}
 					}
 				}
+
+				Repeater {
+					model: values.length
+					Label {
+						text: {
+							var label = (index < legendLabels.length) ? legendLabels[index] : ''
+							return formatItem(colors[index % colors.length], label, values[index], valueUnits)
+						}
+						color: sensorGraph.textColor
+
+						// Grow width based on contents, never shrink.
+						Layout.preferredWidth: 0
+						onImplicitWidthChanged: {
+							if (Layout.preferredWidth < implicitWidth) {
+								Layout.preferredWidth = implicitWidth
+							}
+						}
+					}
+				}
+				
 			}
 
 		}

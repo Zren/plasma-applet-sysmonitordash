@@ -100,6 +100,9 @@ Kicker.DashboardWindow {
 						i18n("Buffered"),
 						i18n("Apps"),
 					]
+					legendItemsBefore: [
+						formatItem('transparent', i18n("Free"), sensorData.memFree, ''),
+					]
 					defaultMax: sensorData.memTotal
 					stacked: true
 					colors: [
