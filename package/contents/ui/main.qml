@@ -75,12 +75,27 @@ Item {
 		// plasmoid.action("configure").trigger()
 	}
 
+	// NOTE: taken from redshift plasmoid (who took in from colorPicker)
+	// This prevents the popup from actually opening, needs to be queued.
+	Timer {
+		id: delayedUnexpandTimer
+		interval: 0
+		onTriggered: {
+			plasmoid.expanded = false
+		}
+	}
+	function toggleDialog() {
+		delayedUnexpandTimer.start()
+		dashView.toggle()
+	}
+	Plasmoid.onActivated: main.toggleDialog()
+
 	DashView {
 		id: dashView
 	}
 	Plasmoid.compactRepresentation: MouseArea {
 		anchors.fill: parent
-		onClicked: dashView.toggle()
+		onClicked: plasmoid.activated()
 
 		// PlasmaCore.IconItem {
 		// 	anchors.fill: parent
