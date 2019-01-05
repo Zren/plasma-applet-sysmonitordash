@@ -312,6 +312,7 @@ Item {
 				id: tooltip
 				visible: mouseArea.containsMouse
 				text: ""
+				delay: 0
 
 				// minX + maxX workaround the bug where the tooltip appears on the
 				// other side of the graph when it would hit the edge of the screen.

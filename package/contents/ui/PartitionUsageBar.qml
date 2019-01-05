@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.0 // ToolTip
 import QtQuick.Layouts 1.1
 import QtQuick.Window 2.1
 
@@ -15,6 +15,7 @@ SimpleProgressBar {
 			id: control
 			visible: mouseArea.containsMouse
 			text: i18n("<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4", partitionPath, humanReadableBytes(totalspace), humanReadableBytes(usedspace), humanReadableBytes(freespace))
+			delay: 0
 		}
 	}
 
