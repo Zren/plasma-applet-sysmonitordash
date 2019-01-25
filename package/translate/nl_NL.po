@@ -1,4 +1,4 @@
-# Translation of sysmonitordash in LANGUAGE
+# Translation of sysmonitordash in nl_NL
 # Copyright (C) 2018
 # This file is distributed under the same license as the sysmonitordash package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sysmonitordash\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
-"POT-Creation-Date: 2018-11-14 21:05-0500\n"
+"POT-Creation-Date: 2019-01-25 14:17-0500\n"
 "PO-Revision-Date: 2019-01-25 12:42+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.1.1\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl_NL\n"
 
 #: ../contents/config/config.qml:26
 msgid "Sensors"
@@ -70,36 +70,31 @@ msgstr "MaxY"
 msgid "CPU"
 msgstr "CPU"
 
-#: ../contents/ui/DashView.qml:99
+#: ../contents/ui/DashView.qml:98
 msgid "Cached"
 msgstr "Gecachet"
 
-#: ../contents/ui/DashView.qml:100
+#: ../contents/ui/DashView.qml:99
 msgid "Buffered"
 msgstr "Gebufferd"
 
-#: ../contents/ui/DashView.qml:101
+#: ../contents/ui/DashView.qml:100
 msgid "Apps"
 msgstr "Apps"
 
-#: ../contents/ui/DashView.qml:110
-msgid "RAM"
-msgstr "RAM"
-
-#. i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
-#. Math.round(sensorData.memFreePercent),
-#. Math.round(sensorData.memCachedPercent),
-#. Math.round(sensorData.memBuffersPercent),
-#. Math.round(sensorData.memAppsPercent))
-#: ../contents/ui/DashView.qml:117 ../contents/ui/DashView.qml:141
+#: ../contents/ui/DashView.qml:103 ../contents/ui/DashView.qml:130
 msgid "Free"
 msgstr "Vrij"
 
-#: ../contents/ui/DashView.qml:132
+#: ../contents/ui/DashView.qml:112
+msgid "RAM"
+msgstr "RAM"
+
+#: ../contents/ui/DashView.qml:127
 msgid "Used"
 msgstr "Gebruikt"
 
-#: ../contents/ui/DashView.qml:139
+#: ../contents/ui/DashView.qml:137
 msgid "Swap"
 msgstr "Wisselgeheugen"
 
@@ -136,8 +131,7 @@ msgstr "Gedownload"
 msgid "Upload"
 msgstr "Geüpload"
 
-#: ../contents/ui/NetworkIOGraph.qml:15
-#: ../contents/ui/NetworkListDetector.qml:51
+#: ../contents/ui/NetworkIOGraph.qml:15 ../contents/ui/NetworkListDetector.qml:51
 msgid "Network"
 msgstr "Netwerk"
 
@@ -149,7 +143,7 @@ msgstr "Wi-Fi"
 msgid "<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4"
 msgstr "<b>%1</b><br>Grootte: %2<br>Gebruikt: %3<br>Vrij: %4"
 
-#: ../contents/ui/SensorGraph.qml:335
+#: ../contents/ui/SensorGraph.qml:368
 msgctxt "%1 is data value, %2 is unit datatype"
 msgid "%1 %2"
 msgstr "%1 %2"

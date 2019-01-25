@@ -1,5 +1,5 @@
 # Translation of sysmonitordash in LANGUAGE
-# Copyright (C) 2018
+# Copyright (C) 2019
 # This file is distributed under the same license as the sysmonitordash package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sysmonitordash \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
-"POT-Creation-Date: 2018-11-14 21:05-0500\n"
+"POT-Creation-Date: 2019-01-25 14:17-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,36 +69,31 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:99
+#: ../contents/ui/DashView.qml:98
 msgid "Cached"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:100
+#: ../contents/ui/DashView.qml:99
 msgid "Buffered"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:101
+#: ../contents/ui/DashView.qml:100
 msgid "Apps"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:110
-msgid "RAM"
-msgstr ""
-
-#. i18n("Unused: %1%\nCached: %2%\nBuffered: %3%\nApps: %4%",
-#. Math.round(sensorData.memFreePercent),
-#. Math.round(sensorData.memCachedPercent),
-#. Math.round(sensorData.memBuffersPercent),
-#. Math.round(sensorData.memAppsPercent))
-#: ../contents/ui/DashView.qml:117 ../contents/ui/DashView.qml:141
+#: ../contents/ui/DashView.qml:103 ../contents/ui/DashView.qml:130
 msgid "Free"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:132
+#: ../contents/ui/DashView.qml:112
+msgid "RAM"
+msgstr ""
+
+#: ../contents/ui/DashView.qml:127
 msgid "Used"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:139
+#: ../contents/ui/DashView.qml:137
 msgid "Swap"
 msgstr ""
 
@@ -147,7 +142,7 @@ msgstr ""
 msgid "<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4"
 msgstr ""
 
-#: ../contents/ui/SensorGraph.qml:335
+#: ../contents/ui/SensorGraph.qml:368
 msgctxt "%1 is data value, %2 is unit datatype"
 msgid "%1 %2"
 msgstr ""
