@@ -365,7 +365,11 @@ Item {
 		// 	return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Math.round(value), units);
 		// }
 		if (units) {
-			return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Math.round(value), units);
+			if (units == 'V') {
+				return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Number(value).toFixed(3), units)
+			} else {
+				return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Math.round(value), units)
+			}
 		} else {
 			return Math.round(value)
 		}
