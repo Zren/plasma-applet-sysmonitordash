@@ -36,6 +36,7 @@ QtObject {
 
 			if (networkName == 'lo' // Ignore loopback device
 			  || networkName.match(/^docker(\d+)/) // Ignore docker networks
+			  || networkName.match(/^(tun|tap)(\d+)/) // Ingore tun/tap interfaces
 			) { 
 				continue;
 			}
