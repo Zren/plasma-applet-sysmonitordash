@@ -34,7 +34,15 @@ QtObject {
 			var blockDevice = value.blockdevices[i]
 			if (blockDevice.type == "disk") {
 				var newDisk = {}
-				newDisk.label = i18n("Disk: %1", blockDevice.name)
+
+				var diskLabel
+				if (blockDevice.label) {
+					diskLabel = i18nc("diskName diskLabel", "%1 (%2)", blockDevice.name, blockDevice.label)
+				} else {
+					diskLabel = '' + blockDevice.name
+				}
+				newDisk.label = i18n("Disk: %1", diskLabel)
+
 				newDisk.sublabel = i18nc("diskModel sizeGb", "%1 %2", blockDevice.model, blockDevice.size)
 
 				// "sda_(8:0)" (used by the systemmonitor datasource for disk i/o speed)
