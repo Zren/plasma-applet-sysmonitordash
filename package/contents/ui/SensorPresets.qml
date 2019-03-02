@@ -33,6 +33,7 @@ QtObject {
 
 		// Default
 		return {
+			label: sensorName,
 			colors: ["#888"],
 		}
 	}
