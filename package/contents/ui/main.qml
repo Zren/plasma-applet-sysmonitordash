@@ -95,7 +95,14 @@ Item {
 	}
 	Plasmoid.compactRepresentation: MouseArea {
 		anchors.fill: parent
-		onClicked: plasmoid.activated()
+		acceptedButtons: Qt.LeftButton | Qt.MiddleButton
+		onClicked: {
+			if (mouse.button == Qt.LeftButton) {
+				plasmoid.activated()
+			} else {
+				main.toggleSensors()
+			}
+		}
 
 		// PlasmaCore.IconItem {
 		// 	anchors.fill: parent
@@ -136,13 +143,49 @@ Item {
 
 				Timer {
 					interval: config.iconSensorInterval
-					running: true
+					running: sensorData.running
 					repeat: true
 					onTriggered: {
 						compactPlotter.addSample([sensorData.cpuTotalLoad])
 					}
 				}
 			}
+
+			Item {
+				id: pauseIcon
+				visible: !sensorData.running
+
+				anchors.centerIn: parent
+				readonly property int minSize: Math.min(parent.width, parent.height)
+				width: minSize
+				height: minSize
+				
+				Rectangle {
+					anchors.top: parent.top
+					anchors.bottom: parent.bottom
+					anchors.left: parent.left
+					anchors.margins: parent.width * 1/5
+					width: parent.width * 1/5
+					color: "#40FFFFFF"
+					border.color: "#80000000"
+					border.width: 1 * units.devicePixelRatio
+				}
+
+				Rectangle {
+					anchors.top: parent.top
+					anchors.bottom: parent.bottom
+					anchors.right: parent.right
+					anchors.margins: parent.width * 1/5
+					width: parent.width * 1/5
+					color: "#40FFFFFF"
+					border.color: "#80000000"
+					border.width: 1 * units.devicePixelRatio
+				}
+			}
 		}
+	}
+
+	function toggleSensors() {
+		sensorData.running = !sensorData.running
 	}
 }

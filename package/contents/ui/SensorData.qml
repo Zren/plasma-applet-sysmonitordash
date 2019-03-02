@@ -60,12 +60,14 @@ Item {
 
 	// /usr/share/plasma/plasmoids/org.kde.plasma.systemloadviewer/contents/ui/SystemLoadViewer.qml
 	property alias dataSource: dataSource
-	property alias interval: dataSource.interval
+	property int interval: 1000
+
+	property bool running: true
 
 	Timer {
 		id: timer
 		repeat: true
-		running: true
+		running: sensorData.running
 		interval: dataSource.interval
 		onTriggered: sensorData.dataTick()
 	}
@@ -75,8 +77,10 @@ Item {
 		id: dataSource
 		engine: "systemmonitor"
 
-		readonly property double maxCpuLoad: 100.0
+		interval: sensorData.running ? sensorData.interval : 2000000000
 
+
+		readonly property double maxCpuLoad: 100.0
 
 		property string cpuSystem: "cpu/system/"
 		property string niceLoad: cpuSystem + "nice"
@@ -138,6 +142,10 @@ Item {
 		}
 
 		onNewData: {
+			if (!sensorData.running) {
+				return // TODO: Disconnect sensors
+			}
+
 			if (typeof data.value === 'undefined') {
 				return; // skip
 			}
@@ -172,7 +180,6 @@ Item {
 				swapUsageProportionChanged()
 			}
 		}
-		interval: 1000
 
 		function fitCpuLoad(load) {
 			var x = load / maxCpuLoad;
