@@ -366,7 +366,7 @@ Item {
 		// }
 		if (units) {
 			if (units == 'V') {
-				return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Number(value).toFixed(3), units)
+				return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Number(value).toFixed(2), units)
 			} else {
 				return i18nc("%1 is data value, %2 is unit datatype", "%1 %2", Math.round(value), units)
 			}
