@@ -31,6 +31,9 @@ QtObject {
 			return tempPreset
 		}
 
-		return {}
+		// Default
+		return {
+			colors: ["#888"],
+		}
 	}
 }
