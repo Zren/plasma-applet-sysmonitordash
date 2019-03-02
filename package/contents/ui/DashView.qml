@@ -11,7 +11,7 @@ Kicker.DashboardWindow {
 	backgroundColor: Qt.rgba(0, 0, 0, 0.737)
 
 	onKeyEscapePressed: {
-		window.toggle();
+		window.close()
 	}
 	
 	mainItem: MouseArea {
@@ -21,7 +21,7 @@ Kicker.DashboardWindow {
 
 		onClicked: {
 			if (mouse.button == Qt.LeftButton) {
-				window.toggle();
+				window.close()
 			}
 		}
 
