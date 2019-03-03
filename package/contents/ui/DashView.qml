@@ -6,6 +6,8 @@ import QtQuick.Window 2.1
 import org.kde.kcoreaddons 1.0 as KCoreAddons
 import org.kde.plasma.private.kicker 0.1 as Kicker
 
+import "lib"
+
 Kicker.DashboardWindow {
 	id: window
 
@@ -18,22 +20,17 @@ Kicker.DashboardWindow {
 	mainItem: Item {
 		anchors.fill: parent
 
-		ScrollView {
-			id: dashScrollView
-			anchors.fill: parent
-
-			readonly property int contentWidth: contentItem ? contentItem.width : width
-			readonly property int contentHeight: contentItem ? contentItem.height : 0 // Warning: Binding loop
-			readonly property int viewportWidth: viewport ? viewport.width : width
-			readonly property int viewportHeight: viewport ? viewport.height : height
-			readonly property int scrollY: flickableItem ? flickableItem.contentY : 0
-
 		RowLayout {
-			width: dashScrollView.viewportWidth
+			anchors.fill: parent
 			spacing: units.largeSpacing
 
-			ColumnLayout {
+			ScrollView1 {
+				id: diskScrollView
 				Layout.preferredWidth: parent.width / 3
+				Layout.fillHeight: true
+
+			ColumnLayout {
+				width: diskScrollView.viewportWidth
 				spacing: units.largeSpacing * 3
 
 				Repeater {
@@ -45,10 +42,9 @@ Kicker.DashboardWindow {
 						partitionPaths: modelData.partitionPaths
 					}
 				}
-				
-				Item { Layout.fillHeight: true }
 			}
 
+			}
 
 			ColumnLayout {
 				Layout.preferredWidth: parent.width / 3
@@ -146,6 +142,16 @@ Kicker.DashboardWindow {
 					}
 				}
 
+
+				ScrollView1 {
+					id: networkScrollView
+					Layout.fillWidth: true
+					Layout.fillHeight: true
+
+					ColumnLayout {
+						width: networkScrollView.viewportWidth
+						spacing: units.largeSpacing
+				
 				Repeater {
 					model: config.networkModel
 
@@ -155,13 +161,18 @@ Kicker.DashboardWindow {
 						interfaceName: modelData.interfaceName
 					}
 				}
-				
-				
-				Item { Layout.fillHeight: true }
+
+					}
+				}
 			}
 
-			ColumnLayout {
+			ScrollView1 {
+				id: sensorScrollView
 				Layout.preferredWidth: parent.width / 3
+				Layout.fillHeight: true
+
+			ColumnLayout {
+				width: sensorScrollView.viewportWidth
 				spacing: units.largeSpacing
 
 				Repeater {
@@ -190,11 +201,10 @@ Kicker.DashboardWindow {
 						}
 					}
 				}
-				
-				Item { Layout.fillHeight: true }
+
+				}
 			}
 		} // RowLayout
-		} // ScrollView
 
 		MouseArea {
 			anchors.fill: parent
