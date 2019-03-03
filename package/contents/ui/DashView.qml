@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.1
 
@@ -14,19 +15,21 @@ Kicker.DashboardWindow {
 		window.close()
 	}
 	
-	mainItem: MouseArea {
+	mainItem: Item {
 		anchors.fill: parent
 
-		acceptedButtons: Qt.LeftButton | Qt.RightButton
+		ScrollView {
+			id: dashScrollView
+			anchors.fill: parent
 
-		onClicked: {
-			if (mouse.button == Qt.LeftButton) {
-				window.close()
-			}
-		}
+			readonly property int contentWidth: contentItem ? contentItem.width : width
+			readonly property int contentHeight: contentItem ? contentItem.height : 0 // Warning: Binding loop
+			readonly property int viewportWidth: viewport ? viewport.width : width
+			readonly property int viewportHeight: viewport ? viewport.height : height
+			readonly property int scrollY: flickableItem ? flickableItem.contentY : 0
 
 		RowLayout {
-			anchors.fill: parent
+			width: dashScrollView.viewportWidth
 			spacing: units.largeSpacing
 
 			ColumnLayout {
@@ -190,8 +193,13 @@ Kicker.DashboardWindow {
 				
 				Item { Layout.fillHeight: true }
 			}
+		} // RowLayout
+		} // ScrollView
+
+		MouseArea {
+			anchors.fill: parent
+			onClicked: window.close()
 		}
-		
 	}
 
 	function humanReadableBytes(kibibytes) {
