@@ -60,7 +60,15 @@ SimpleProgressBar {
 	function connectSource(sensor) {
 		// console.log('connectedSources', sensor, sensorData.dataSource.connectedSources.indexOf(sensor))
 		if (sensorData.dataSource.connectedSources.indexOf(sensor) == -1) {
+			// console.log('connectSource', sensor)
 			sensorData.dataSource.connectSource(sensor)
+		}
+	}
+	function disconnectSource(sensor) {
+		// console.log('connectedSources', sensor, sensorData.dataSource.connectedSources.indexOf(sensor))
+		if (sensorData.dataSource.connectedSources.indexOf(sensor) >= 0) {
+			// console.log('disconnectSource', sensor)
+			sensorData.dataSource.disconnectSource(sensor)
 		}
 	}
 
@@ -82,15 +90,30 @@ SimpleProgressBar {
 
 	Connections {
 		target: sensorData.dataSource
-		onSourceAdded: {
+
+		function isPartitionSource(source) {
 			var partitionRegExp = new RegExp("^partitions(/.*)/filllevel$")
 			var match = source.match(partitionRegExp)
+			return match
+		}
+
+		onSourceAdded: {
+			var match = isPartitionSource(source)
 			if (match) {
-				// console.log('partitionRegExp', match, match[1])
 				if (match[1] == partitionPath) {
 					partitionUsageBar.connectSource('partitions' + partitionPath + '/usedspace')
 					partitionUsageBar.connectSource('partitions' + partitionPath + '/freespace')
 					partitionUsageBar.connectSource('partitions' + partitionPath + '/filllevel')
+				}
+			}
+		}
+		onSourceRemoved: {
+			var match = isPartitionSource(source)
+			if (match) {
+				if (match[1] == partitionPath) {
+					partitionUsageBar.disconnectSource('partitions' + partitionPath + '/usedspace')
+					partitionUsageBar.disconnectSource('partitions' + partitionPath + '/freespace')
+					partitionUsageBar.disconnectSource('partitions' + partitionPath + '/filllevel')
 				}
 			}
 		}
