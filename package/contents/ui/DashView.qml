@@ -51,6 +51,7 @@ Kicker.DashboardWindow {
 				spacing: units.largeSpacing
 
 				SensorGraph {
+					id: cpuTotalGraph
 					icon: "cpu"
 					sensors: {
 						var l = []
@@ -83,6 +84,34 @@ Kicker.DashboardWindow {
 
 					function formatLabel(value, units) {
 						return fixedWidth(Math.round(value), 3) + " " + units
+					}
+				}
+
+				GridLayout {
+					id: cpuCoreGrid
+					Layout.fillWidth: true
+
+					visible: sensorData.cpuCount >= 5
+
+					property int cellSize: 40 * units.devicePixelRatio
+					columns: width / cellSize
+
+					Repeater {
+						model: cpuCoreGrid.visible ? sensorData.cpuCount : 0
+
+						SensorGraph {
+							Layout.preferredHeight: cpuCoreGrid.cellSize
+
+							sensors: ["cpu/cpu" + index + "/TotalLoad"]
+							defaultMax: 100
+							colors: ["#708FA3"]
+							maxYVisible: false
+
+							function formatLabel(value, units) {
+								return cpuTotalGraph.formatLabel(value, units)
+							}
+						}
+
 					}
 				}
 
