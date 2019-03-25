@@ -151,16 +151,16 @@ Kicker.DashboardWindow {
 					ColumnLayout {
 						width: networkScrollView.viewportWidth
 						spacing: units.largeSpacing
-				
-				Repeater {
-					model: config.networkModel
 
-					NetworkIOGraph {
-						label: modelData.label
-						icon: modelData.icon
-						interfaceName: modelData.interfaceName
-					}
-				}
+						Repeater {
+							model: config.networkModel
+
+							NetworkIOGraph {
+								label: modelData.label
+								icon: modelData.icon
+								interfaceName: modelData.interfaceName
+							}
+						}
 
 					}
 				}
