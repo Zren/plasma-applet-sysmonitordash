@@ -154,28 +154,21 @@ Item {
 
 			if (sourceName == sysLoad) {
 				totalCpuLoadProportions[0] = fitCpuLoad(data.value)
-			}
-			else if (sourceName == userLoad) {
+			} else if (sourceName == userLoad) {
 				totalCpuLoadProportions[1] = fitCpuLoad(data.value)
-			}
-			else if (sourceName == niceLoad) {
+			} else if (sourceName == niceLoad) {
 				totalCpuLoadProportions[2] = fitCpuLoad(data.value)
-			}
-			else if (sourceName == ioWait) {
+			} else if (sourceName == ioWait) {
 				totalCpuLoadProportions[3] = fitCpuLoad(data.value)
 				totalCpuLoadProportionsChanged()
-			}
-			else if (sourceName == memApplication) {
+			} else if (sourceName == memApplication) {
 				memoryUsageProportions[0] = fitMemoryUsage(data.value)
-			}
-			else if (sourceName == memBuffers) {
+			} else if (sourceName == memBuffers) {
 				memoryUsageProportions[1] = fitMemoryUsage(data.value)
-			}
-			else if (sourceName == memCached) {
+			} else if (sourceName == memCached) {
 				memoryUsageProportions[2] = fitMemoryUsage(data.value)
 				memoryUsageProportionsChanged()
-			}
-			else if (sourceName == swapUsed) {
+			} else if (sourceName == swapUsed) {
 				swapUsageProportion = fitSwapUsage(data.value)
 				swapUsageProportionChanged()
 			}
