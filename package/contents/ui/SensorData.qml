@@ -5,14 +5,14 @@ Item {
 	id: sensorData
 
 	function getData(key) {
-		if (typeof dataSource.data[key] === 'undefined') return 0;
-		if (typeof dataSource.data[key].value === 'undefined') return 0;
-		return dataSource.data[key].value;
+		if (typeof dataSource.data[key] === 'undefined') return 0
+		if (typeof dataSource.data[key].value === 'undefined') return 0
+		return dataSource.data[key].value
 	}
 	function getUnits(key) {
-		if (typeof dataSource.data[key] === 'undefined') return '';
-		if (typeof dataSource.data[key].units === 'undefined') return '';
-		return dataSource.data[key].units;
+		if (typeof dataSource.data[key] === 'undefined') return ''
+		if (typeof dataSource.data[key].units === 'undefined') return ''
+		return dataSource.data[key].units
 	}
 
 	readonly property real cpuTotalLoad: getData(dataSource.totalLoad)
@@ -147,7 +147,7 @@ Item {
 			}
 
 			if (typeof data.value === 'undefined') {
-				return; // skip
+				return // skip
 			}
 
 			// console.log(sourceName, data.value)
@@ -175,23 +175,23 @@ Item {
 		}
 
 		function fitCpuLoad(load) {
-			var x = load / maxCpuLoad;
-			if (isNaN(x)) {return 0;}
-			return Math.min(x, 1); // Ensure that we do not get values that might cause problems
+			var x = load / maxCpuLoad
+			if (isNaN(x)) { return 0 }
+			return Math.min(x, 1) // Ensure that we do not get values that might cause problems
 		}
 
 		function fitMemoryUsage(usage) {
 			var x = (usage / (parseFloat(dataSource.data[dataSource.memFree].value) +
 							 parseFloat(dataSource.data[dataSource.memUsed].value)))
-			if (isNaN(x)) {return 0;}
-			return Math.min(x, 1);
+			if (isNaN(x)) { return 0 }
+			return Math.min(x, 1)
 		}
 
 		function fitSwapUsage(usage) {
 			var x = (usage / (parseFloat(usage) + parseFloat(dataSource.data[dataSource.swapFree].value)))
 
-			if (isNaN(x)) {return 0;}
-			return Math.min(x, 1);
+			if (isNaN(x)) { return 0 }
+			return Math.min(x, 1)
 		}
 	}
 }
