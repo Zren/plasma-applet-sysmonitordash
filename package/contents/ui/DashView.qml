@@ -29,20 +29,20 @@ Kicker.DashboardWindow {
 				Layout.preferredWidth: parent.width / 3
 				Layout.fillHeight: true
 
-			ColumnLayout {
-				width: diskScrollView.viewportWidth
-				spacing: units.largeSpacing * 3
+				ColumnLayout {
+					width: diskScrollView.viewportWidth
+					spacing: units.largeSpacing * 3
 
-				Repeater {
-					model: config.diskModel
-					DiskMonitor {
-						label: modelData.label
-						sublabel: modelData.sublabel
-						partitionId: modelData.partitionId
-						partitionPaths: modelData.partitionPaths
+					Repeater {
+						model: config.diskModel
+						DiskMonitor {
+							label: modelData.label
+							sublabel: modelData.sublabel
+							partitionId: modelData.partitionId
+							partitionPaths: modelData.partitionPaths
+						}
 					}
 				}
-			}
 
 			}
 
@@ -200,36 +200,36 @@ Kicker.DashboardWindow {
 				Layout.preferredWidth: parent.width / 3
 				Layout.fillHeight: true
 
-			ColumnLayout {
-				width: sensorScrollView.viewportWidth
-				spacing: units.largeSpacing
+				ColumnLayout {
+					width: sensorScrollView.viewportWidth
+					spacing: units.largeSpacing
 
-				Repeater {
-					model: config.sensorModel
+					Repeater {
+						model: config.sensorModel
 
-					SensorGraph {
-						icon: getSensorData('icon', "")
-						iconOverlays: getSensorData('iconOverlays', [])
-						sensors: modelData.sensors || []
-						colors: getSensorData('colors', [])
-						defaultMax: getSensorData('defaultMax', 0)
-						label: getSensorData('label', "")
-						sublabel: getSensorData('sublabel', "")
-						valueUnits: modelData.units || sensorUnits
+						SensorGraph {
+							icon: getSensorData('icon', "")
+							iconOverlays: getSensorData('iconOverlays', [])
+							sensors: modelData.sensors || []
+							colors: getSensorData('colors', [])
+							defaultMax: getSensorData('defaultMax', 0)
+							label: getSensorData('label', "")
+							sublabel: getSensorData('sublabel', "")
+							valueUnits: modelData.units || sensorUnits
 
-						function getSensorData(key, defaultValue) {
-							if (typeof modelData === "undefined" || !modelData[key]) {
-								if (typeof sensorPreset === "undefined" || typeof sensorPreset[key] === "undefined") {
-									return defaultValue
+							function getSensorData(key, defaultValue) {
+								if (typeof modelData === "undefined" || !modelData[key]) {
+									if (typeof sensorPreset === "undefined" || typeof sensorPreset[key] === "undefined") {
+										return defaultValue
+									} else {
+										return sensorPreset[key]
+									}
 								} else {
-									return sensorPreset[key]
+									return modelData[key]
 								}
-							} else {
-								return modelData[key]
 							}
 						}
 					}
-				}
 
 				}
 			}
