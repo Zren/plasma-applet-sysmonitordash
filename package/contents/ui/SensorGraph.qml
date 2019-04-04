@@ -105,9 +105,9 @@ Item {
 		}
 
 		Component.onCompleted: {
-			addZero()
-			addZero()
 			sensorsChanged()
+			addZero()
+			addZero()
 		}
 
 		Component {
