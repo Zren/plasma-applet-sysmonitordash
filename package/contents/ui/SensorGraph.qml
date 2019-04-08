@@ -127,7 +127,6 @@ Item {
 
 				var item = plotDataComponent.createObject(plotter, {
 					color: plotter.colors[i % plotter.colors.length],
-					sampleSize: plotter.sampleSize,
 				})
 				list.push(item)
 			}
