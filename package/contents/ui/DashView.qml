@@ -91,13 +91,14 @@ Kicker.DashboardWindow {
 					id: cpuCoreGrid
 					Layout.fillWidth: true
 
-					visible: sensorData.cpuCount >= 5
+					property bool showGrid: sensorData.cpuCount >= 5
+					visible: showGrid
 
 					property int cellSize: 40 * units.devicePixelRatio
 					columns: width / cellSize
 
 					Repeater {
-						model: cpuCoreGrid.visible ? sensorData.cpuCount : 0
+						model: cpuCoreGrid.showGrid ? sensorData.cpuCount : 0
 
 						SensorGraph {
 							Layout.preferredHeight: cpuCoreGrid.cellSize
