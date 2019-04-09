@@ -111,6 +111,12 @@ Kicker.DashboardWindow {
 							function formatLabel(value, units) {
 								return cpuTotalGraph.formatLabel(value, units)
 							}
+
+							function formatItem(color, label, value, units) {
+								// We override this function to so that we
+								// do not draw the cpu color square in the legend.
+								return formatLabel(value, units)
+							}
 						}
 
 					}
