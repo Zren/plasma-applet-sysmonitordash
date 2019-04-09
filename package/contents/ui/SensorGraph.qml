@@ -186,6 +186,8 @@ Item {
 				columnSpacing: units.largeSpacing
 				columns: Math.ceil(itemCount / 4)
 				readonly property int itemCount: legendRepeaterBefore.count + legendRepeater.count
+				readonly property int widthMinusSpacing: legendArea.width - columns * columnSpacing
+				readonly property int maxColumnWidth: widthMinusSpacing / Math.max(1, columns)
 
 				anchors {
 					// top: parent.top
@@ -231,6 +233,7 @@ Item {
 								Layout.preferredWidth = implicitWidth
 							}
 						}
+						Layout.maximumWidth: legendGridLayout.maxColumnWidth
 					}
 				}
 				
