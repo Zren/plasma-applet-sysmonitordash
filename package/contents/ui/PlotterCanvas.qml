@@ -25,6 +25,7 @@ Canvas {
 		if (!context) {
 			getContext("2d")
 		}
+
 		context.clearRect(0, 0, width, height)
 		var adjustedMax = autoRange ? max : rangeMax
 		var adjustedMin = autoRange ? min : rangeMin
@@ -36,8 +37,9 @@ Canvas {
 			context.lineWidth = 1 * units.devicePixelRatio
 			context.beginPath()
 			var rangeY = adjustedMax - adjustedMin
-			for (var j = 0; j < dataSet.values.length; j++) {
-				var value = dataSet.values[j]
+			// console.log('dataSet', i, 'normalizedValues.length', dataSet.normalizedValues.length)
+			for (var j = 0; j < dataSet.normalizedValues.length; j++) {
+				var value = dataSet.normalizedValues[j]
 				var x = dataSet.sampleSize >= 2 ? j/(dataSet.sampleSize-1) : 0
 				var y = (value - adjustedMin) / (rangeY > 0 ? rangeY : 1)
 				x = x * width
@@ -58,13 +60,46 @@ Canvas {
 		var adjustedMax = Number.NEGATIVE_INFINITY
 		var adjustedMin = Number.POSITIVE_INFINITY
 		if (stacked) {
-			for (var i = 0; i < dataSets.length; i++) {
+			var prevDataSet = null
+			for (var i = dataSets.length-1; i >= 0; i--) {
 				var dataSet = dataSets[i]
+				if (prevDataSet) {
+					dataSet.normalizedValues = new Array(dataSet.values.length)
+					for (var j = 0; j < dataSet.values.length; j++) {
+						var normalizedValue = Number(dataSet.values[j]) + Number(prevDataSet.normalizedValues[j])
+						// if (normalizedValue !== 0) {
+						// 	console.log('dataSets[', i, '].normalizedValues[', j, '].normalizedValue', normalizedValue, 'label', sensorGraph.label)
+						// }
+						dataSet.normalizedValues[j] = normalizedValue
+						if (normalizedValue > adjustedMax) {
+							adjustedMax = normalizedValue
+						}
+						if (normalizedValue < adjustedMin) {
+							adjustedMin = normalizedValue
+						}
+					}
+				} else {
+					dataSet.normalizedValues = dataSet.values.slice()
+					if (dataSet.max > adjustedMax) {
+						adjustedMax = dataSet.max
+					}
+					if (dataSet.min > adjustedMin) {
+						adjustedMin = dataSet.min
+					}
+				}
+				prevDataSet = dataSet
+
+				if (dataSet.max > max) {
+					max = dataSet.max
+				}
+				if (dataSet.min > min) {
+					min = dataSet.min
+				}
 			}
 		} else {
 			for (var i = 0; i < dataSets.length; i++) {
 				var dataSet = dataSets[i]
-				dataSet.normalizedValues = dataSet.values
+				dataSet.normalizedValues = dataSet.values.slice()
 				if (dataSet.max > max) {
 					adjustedMax = max = dataSet.max
 				}
@@ -73,10 +108,6 @@ Canvas {
 				}
 			}
 		}
-	}
-
-	function plotXY(x, y) {
-
 	}
 
 	function addSample(values) {
@@ -91,11 +122,20 @@ Canvas {
 		}
 		max = Math.max.apply(null, maxValues)
 		min = Math.min.apply(null, minValues)
+		normalizeData()
 	}
 
-	onSampleSizeChanged: {
+	function updateSampleSize() {
 		for (var i = 0; i < dataSets.length; i++) {
 			dataSets[i].setSampleSize(sampleSize)
 		}
+		// normalizeData()
+	}
+	onSampleSizeChanged: {
+		updateSampleSize()
+	}
+
+	onDataSetsChanged: {
+		updateSampleSize()
 	}
 }
