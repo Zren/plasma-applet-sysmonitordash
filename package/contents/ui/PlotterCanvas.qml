@@ -17,12 +17,18 @@ Canvas {
 	property real rangeMin: 0
 	property color gridColor: '#000'
 	property int horizontalGridLineCount: 0
+	property bool normalizeRequested: true
 
 	property var dataSets: []
 
 	onPaint: {
 		if (!context) {
 			getContext("2d")
+		}
+
+		if (normalizeRequested) {
+			normalizeData()
+			normalizeRequested = false
 		}
 
 		context.clearRect(0, 0, width, height)
@@ -156,14 +162,14 @@ Canvas {
 		}
 		max = Math.max.apply(null, maxValues)
 		min = Math.min.apply(null, minValues)
-		normalizeData()
+		normalizeRequested = true
 	}
 
 	function updateSampleSize() {
 		for (var i = 0; i < dataSets.length; i++) {
 			dataSets[i].setSampleSize(sampleSize)
 		}
-		// normalizeData()
+		// normalizeRequested = true
 	}
 	onSampleSizeChanged: {
 		updateSampleSize()
