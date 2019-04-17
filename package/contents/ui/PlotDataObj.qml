@@ -20,7 +20,7 @@ QtObject {
 			values.shift()
 		}
 
-		values.push(value)
+		values.push(Number(value))
 
 		max = Math.max.apply(null, values)
 		min = Math.min.apply(null, values)

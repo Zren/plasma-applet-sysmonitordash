@@ -106,7 +106,7 @@ Canvas {
 				if (prevDataSet) {
 					dataSet.normalizedValues = new Array(dataSet.values.length)
 					for (var j = 0; j < dataSet.values.length; j++) {
-						var normalizedValue = Number(dataSet.values[j]) + Number(prevDataSet.normalizedValues[j])
+						var normalizedValue = dataSet.values[j] + prevDataSet.normalizedValues[j]
 						// if (normalizedValue !== 0) {
 						// 	console.log('dataSets[', i, '].normalizedValues[', j, '].normalizedValue', normalizedValue, 'label', sensorGraph.label)
 						// }
