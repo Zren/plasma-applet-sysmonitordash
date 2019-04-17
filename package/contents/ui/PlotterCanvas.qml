@@ -21,22 +21,30 @@ Canvas {
 	property var dataSets: []
 
 	onPaint: {
-		// console.log('onPaint')
 		if (!context) {
 			getContext("2d")
 		}
 
 		context.clearRect(0, 0, width, height)
+
 		var adjustedMax = autoRange ? max : rangeMax
 		var adjustedMin = autoRange ? min : rangeMin
+		var rangeY = adjustedMax - adjustedMin
+
+		var prevPath = [
+			[0, height], // bottom left
+			[width, height], // bottom right
+		]
+		var dataSetPaths = new Array(dataSets.length)
+
 		for (var i = 0; i < dataSets.length; i++) {
 			var dataSet = dataSets[i]
 			// console.log('dataSet', i, 'length=', dataSet.values.length, 'sampleSize=', dataSet.sampleSize, 'max=', adjustedMax, 'min=', adjustedMin)
-			context.fillStyle = dataSet.color
-			context.strokeStyle = dataSet.color
-			context.lineWidth = 1 * units.devicePixelRatio
+
+			//--- Generate curPath
+			var curPath = new Array(dataSet.normalizedValues.length)
+			dataSetPaths[i] = curPath
 			context.beginPath()
-			var rangeY = adjustedMax - adjustedMin
 			// console.log('dataSet', i, 'normalizedValues.length', dataSet.normalizedValues.length)
 			for (var j = 0; j < dataSet.normalizedValues.length; j++) {
 				var value = dataSet.normalizedValues[j]
@@ -46,12 +54,38 @@ Canvas {
 				y = y * height
 				// console.log('\t', j, value, '(', Math.floor(x), Math.floor(y), ')')
 				y = height - y
+				curPath[j] = [x, y]
+
+				// Navigate curPath
 				context.lineTo(x, y)
 			}
-			context.lineTo(width, height) // bottom right
-			context.lineTo(0, height) // bottom left
+
+			// Reverse navigate prevPath
+			for (var j = prevPath.length-1; j >= 0; j--) {
+				var p = prevPath[j]
+				context.lineTo(p[0], p[1])
+			}
+
+			// Close and fill
 			context.closePath()
+			context.fillStyle = Qt.rgba(dataSet.color.r, dataSet.color.g, dataSet.color.b, 0.5)
 			context.fill()
+
+			prevPath = curPath
+		}
+
+		//--- Stroke lines
+		context.lineWidth = 3 * units.devicePixelRatio
+		for (var i = 0; i < dataSets.length; i++) {
+			var dataSet = dataSets[i]
+			var curPath = dataSetPaths[i]
+			context.beginPath()
+			for (var j = 0; j < curPath.length; j++) {
+				var p = curPath[j]
+				// context.lineTo(p[0], p[1])
+				context.lineTo(p.x, p.y)
+			}
+			context.strokeStyle = dataSet.color
 			context.stroke()
 		}
 	}
