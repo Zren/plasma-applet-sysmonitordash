@@ -41,7 +41,7 @@ Canvas {
 			[0, height], // bottom left
 			[width, height], // bottom right
 		]
-		var dataSetPaths = new Array(dataSets.length)
+		// var dataSetPaths = new Array(dataSets.length)
 
 		for (var i = dataSets.length-1; i >= 0; i--) {
 			var dataSet = dataSets[i]
@@ -49,7 +49,7 @@ Canvas {
 
 			//--- Generate curPath
 			var curPath = new Array(dataSet.normalizedValues.length)
-			dataSetPaths[i] = curPath
+			// dataSetPaths[i] = curPath
 			context.beginPath()
 			// console.log('dataSet', i, 'normalizedValues.length', dataSet.normalizedValues.length)
 			for (var j = 0; j < dataSet.normalizedValues.length; j++) {
@@ -65,6 +65,7 @@ Canvas {
 				// Navigate curPath
 				context.lineTo(x, y)
 			}
+			// dataSetPaths[i] = curPath
 
 			// Reverse navigate prevPath
 			for (var j = prevPath.length-1; j >= 0; j--) {
@@ -74,26 +75,28 @@ Canvas {
 
 			// Close and fill
 			context.closePath()
-			context.fillStyle = Qt.rgba(dataSet.color.r, dataSet.color.g, dataSet.color.b, 0.5)
+			// context.fillStyle = Qt.rgba(dataSet.color.r, dataSet.color.g, dataSet.color.b, 0.65)
+			context.fillStyle = dataSet.color
+			// console.log('dataSet', i, dataSet.color, '=>', context.fillStyle)
 			context.fill()
 
 			prevPath = curPath
 		}
 
 		//--- Stroke lines
-		context.lineWidth = 3 * units.devicePixelRatio
-		for (var i = 0; i < dataSets.length; i++) {
-			var dataSet = dataSets[i]
-			var curPath = dataSetPaths[i]
-			context.beginPath()
-			for (var j = 0; j < curPath.length; j++) {
-				var p = curPath[j]
-				// context.lineTo(p[0], p[1])
-				context.lineTo(p.x, p.y)
-			}
-			context.strokeStyle = dataSet.color
-			context.stroke()
-		}
+		// context.lineWidth = Math.floor(1 * units.devicePixelRatio)
+		// for (var i = 0; i < dataSets.length; i++) {
+		// 	var dataSet = dataSets[i]
+		// 	var curPath = dataSetPaths[i]
+		// 	context.beginPath()
+		// 	for (var j = 0; j < curPath.length; j++) {
+		// 		var p = curPath[j]
+		// 		context.lineTo(p[0], p[1])
+		// 	}
+		// 	context.strokeStyle = dataSet.color
+		// 	console.log('dataSet.stroke', i, dataSet.color)
+		// 	context.stroke()
+		// }
 	}
 
 	function normalizeData() {
