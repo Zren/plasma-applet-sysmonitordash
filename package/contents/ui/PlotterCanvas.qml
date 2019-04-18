@@ -43,7 +43,7 @@ Canvas {
 		]
 		var dataSetPaths = new Array(dataSets.length)
 
-		for (var i = 0; i < dataSets.length; i++) {
+		for (var i = dataSets.length-1; i >= 0; i--) {
 			var dataSet = dataSets[i]
 			// console.log('dataSet', i, 'length=', dataSet.values.length, 'sampleSize=', dataSet.sampleSize, 'max=', adjustedMax, 'min=', adjustedMin)
 
