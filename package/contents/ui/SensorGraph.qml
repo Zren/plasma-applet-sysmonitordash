@@ -55,7 +55,7 @@ Item {
 		property string label: ''
 		property string sublabel: ''
 		property string valueSublabel: ''
-		property string maxYLabel: formatLabel(maxY, plotter.units)
+		property string maxYLabel: formatLabel(maxY, sensorGraph.valueUnits)
 		property var sensors: []
 		property var values: []
 
@@ -74,7 +74,6 @@ Item {
 		}
 		
 		property var colors: [theme.highlightColor]
-		property var units: sensorGraph.valueUnits
 		sampleSize: Math.floor(config.visibleDuration / config.sensorInterval) + 1
 
 
@@ -412,7 +411,7 @@ Item {
 			var hoveredValue = dataset.values[valueIndex]
 			var label = ''
 
-			str += formatItem(dataset.color, label, hoveredValue, plotter.units)
+			str += formatItem(dataset.color, label, hoveredValue, sensorGraph.valueUnits)
 		}
 
 		return str
