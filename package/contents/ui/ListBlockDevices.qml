@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import org.kde.plasma.core 2.0 as PlasmaCore
 
 QtObject {
 	id: lsblk
@@ -69,6 +70,25 @@ QtObject {
 
 		// console.log("newDiskModel", JSON.stringify(newDiskModel, null, "\t"))
 		config.diskModel = newDiskModel
+	}
+
+	property var hpSource: PlasmaCore.DataSource {
+		id: hpSource
+		engine: "hotplug"
+		// connectedSources: sources
+		interval: 0
+
+		onSourceAdded: {
+			// disconnectSource(source)
+			// connectSource(source)
+			// console.log('hotplug.onSourceAdded', source)
+			// lsblk.update()
+		}
+		onSourceRemoved: {
+			// disconnectSource(source)
+			// console.log('hotplug.onSourceRemoved', source)
+			// lsblk.update()
+		}
 	}
 
 	Component.onCompleted: {
