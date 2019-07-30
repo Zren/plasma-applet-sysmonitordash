@@ -46,7 +46,8 @@ Item {
 		border.color: Qt.rgba(0, 0, 0, 0.8)
 	}
 
-	KQuickAddons.Plotter {
+	// KQuickAddons.Plotter {
+	PlotterCanvas {
 		id: plotter
 		anchors.fill: parent
 
@@ -111,7 +112,8 @@ Item {
 
 		Component {
 			id: plotDataComponent
-			KQuickAddons.PlotData {}
+			// KQuickAddons.PlotData {}
+			PlotDataObj {}
 		}
 		onSensorsChanged: {
 			// console.log(sensor, sensorData.dataSource.connectedSources)
@@ -131,10 +133,12 @@ Item {
 			}
 			dataSets = list
 
+			// Note: Only need this workaround for KQuickAddons.Plotter,
+			// PlotterCanvas does not need this workaround.
 			// Trick Plotter into calling PlotData::setSampleSize()
-			var size = plotter.sampleSize
-			plotter.sampleSize = plotter.sampleSize + 1
-			plotter.sampleSize = size
+			// var size = plotter.sampleSize
+			// plotter.sampleSize = plotter.sampleSize + 1
+			// plotter.sampleSize = size
 		}
 
 		dataSets: []
@@ -290,6 +294,7 @@ Item {
 				// console.log('values', values)
 				plotter.addSample(values)
 				plotter.values = values
+				plotter.requestPaint()
 			}
 		}
 
