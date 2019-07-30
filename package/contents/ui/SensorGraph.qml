@@ -293,21 +293,43 @@ Item {
 			}
 		}
 
+		property int hoveredIndex: -1
+		property int hoveredIndexX: 0
+		function updateHoveredIndex() {
+			if (mouseArea.containsMouse) {
+				var xOffset = mouseArea.mouseX - mouseArea.x
+				var xRatio = xOffset / mouseArea.width
+
+				if (plotter.dataSets.length >= 1) {
+					var datasetLength = plotter.dataSets[0].values.length
+					hoveredIndex = Math.round(xRatio * (datasetLength-1))
+					hoveredIndexX = hoveredIndex / Math.max(1, datasetLength-1) * mouseArea.width
+					return
+				}
+			}
+			hoveredIndex = -1
+			hoveredIndexX = 0
+		}
+		Connections {
+			target: mouseArea
+			onMouseXChanged: plotter.updateHoveredIndex()
+			onContainsMouseChanged: plotter.updateHoveredIndex()
+		}
+		Rectangle {
+			id: hoverLine
+			visible: mouseArea.containsMouse
+			width: 1 * units.devicePixelRatio
+			height: parent.height
+			x: plotter.hoveredIndexX
+			opacity: 0.65
+			color: "#FFF"
+		}
+		
 		MouseArea {
 			id: mouseArea
 			anchors.fill: parent
 			acceptedButtons: Qt.NoButton
 			hoverEnabled: true
-
-			Rectangle {
-				id: hoverLine
-				visible: mouseArea.containsMouse
-				width: 1
-				height: parent.height
-				x: mouseArea.mouseX
-				opacity: 0.65
-				color: "#FFF"
-			}
 
 			ToolTip {
 				id: tooltip
