@@ -140,8 +140,8 @@ Kicker.DashboardWindow {
 					defaultMax: sensorData.memTotal
 					stacked: true
 					colors: [
-						"#1122aa22",
-						"#11aaeeaa",
+						"#6f936d",
+						"#aaeeaa",
 						"#336699",
 					]
 					label: i18n("RAM")
@@ -167,7 +167,7 @@ Kicker.DashboardWindow {
 					defaultMax: sensorData.swapTotal
 					stacked: true
 					colors: [
-						"#1122aa22",
+						"#6f936d",
 					]
 					label: i18n("Swap")
 					sublabel: plasmoid.configuration.swapSublabel || humanReadableBytes(sensorData.swapTotal)
