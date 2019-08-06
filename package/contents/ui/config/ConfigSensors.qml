@@ -5,9 +5,6 @@ import QtQuick.Layouts 1.0
 import ".."
 import "../lib"
 
-// ConfigPage {
-// 	id: page
-// 	showAppletVersion: true
 ColumnLayout {
 
 	SensorDetector {
@@ -34,28 +31,36 @@ ColumnLayout {
 		// readonly property string jsonValue: JSON.stringify(valueObj, null, '  ')
 	}
 
-	Flow {
-		Layout.fillWidth: true
-		
-		Button {
-			iconName: "edit-table-insert-row-below"
-			text: i18n("Add Sensor")
-			onClicked: tableView.addRow()
+	RowLayout {
+		Flow {
+			Layout.fillWidth: true
+			
+			Button {
+				iconName: "edit-table-insert-row-below"
+				text: i18n("Add Sensor")
+				onClicked: tableView.addRow()
+			}
+			Button {
+				iconName: "edit-table-insert-row-below"
+				text: i18n("Add Temps")
+				onClicked: tableView.addAllTemps()
+			}
+			Button {
+				iconName: "edit-table-insert-row-below"
+				text: i18n("Add Fans")
+				onClicked: tableView.addAllFans()
+			}
+			Button {
+				iconName: "edit-table-insert-row-below"
+				text: i18n("Add all lm_sensors")
+				onClicked: tableView.addAllLmSensors()
+			}
 		}
-		Button {
-			iconName: "edit-table-insert-row-below"
-			text: i18n("Add Temps")
-			onClicked: tableView.addAllTemps()
-		}
-		Button {
-			iconName: "edit-table-insert-row-below"
-			text: i18n("Add Fans")
-			onClicked: tableView.addAllFans()
-		}
-		Button {
-			iconName: "edit-table-insert-row-below"
-			text: i18n("Add all lm_sensors")
-			onClicked: tableView.addAllLmSensors()
+
+		Loader {
+			id: appletVersionLoader
+			source: "../lib/AppletVersion.qml"
+			Layout.alignment: Qt.AlignTop | Qt.AlignRight
 		}
 	}
 
