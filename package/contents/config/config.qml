@@ -27,4 +27,9 @@ ConfigModel {
 		icon: "utilities-system-monitor"
 		source: "config/ConfigSensors.qml"
 	}
+	ConfigCategory {
+		name: i18n("Settings")
+		icon: "configure"
+		source: "config/ConfigSettings.qml"
+	}
 }

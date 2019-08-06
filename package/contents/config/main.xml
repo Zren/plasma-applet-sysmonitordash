@@ -6,6 +6,15 @@
 	<kcfgfile name=""/>
 
 	<group name="General">
+		<entry name="iconUpdateInterval" type="int">
+			<default>1000</default>
+		</entry>
+		<entry name="dashVisibleDuration" type="int">
+			<default>60</default>
+		</entry>
+		<entry name="dashUpdateInterval" type="int">
+			<default>250</default>
+		</entry>
 		<entry name="cpuSublabel" type="string">
 			<default></default>
 		</entry>

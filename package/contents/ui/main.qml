@@ -21,9 +21,10 @@ Item {
 
 	QtObject {
 		id: config
-		property int visibleDuration: 60 * 1000
-		property int sensorInterval: 250
-		property int iconSensorInterval: 1000
+		property int sensorInterval: plasmoid.configuration.dashUpdateInterval
+		property int visibleDuration: plasmoid.configuration.dashVisibleDuration * 1000
+		property int iconSensorInterval: plasmoid.configuration.iconUpdateInterval
+		// property int iconVisibleDuration: iconSensorInterval * 5
 
 		property var diskModel: []
 		property var networkModel: []
