@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sysmonitordash\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
-"POT-Creation-Date: 2019-01-25 14:17-0500\n"
+"POT-Creation-Date: 2019-08-17 17:17-0400\n"
 "PO-Revision-Date: 2019-01-25 12:42+0100\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -18,83 +18,115 @@ msgstr ""
 "X-Generator: Poedit 2.1.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../contents/config/config.qml:26
+#: ../contents/config/config.qml:7
 msgid "Sensors"
 msgstr "Sensoren"
 
-#: ../contents/ui/config/ConfigSensors.qml:42
+#: ../contents/config/config.qml:12
+msgid "Networks"
+msgstr ""
+
+#: ../contents/config/config.qml:17
+msgid "Settings"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSensors.qml:40
 msgid "Add Sensor"
 msgstr "Sensor toevoegen"
 
-#: ../contents/ui/config/ConfigSensors.qml:47
+#: ../contents/ui/config/ConfigSensors.qml:45
 msgid "Add Temps"
 msgstr "Temperaturen toevoegen"
 
-#: ../contents/ui/config/ConfigSensors.qml:52
+#: ../contents/ui/config/ConfigSensors.qml:50
 msgid "Add Fans"
 msgstr "Ventilatoren toevoegen"
 
-#: ../contents/ui/config/ConfigSensors.qml:57
+#: ../contents/ui/config/ConfigSensors.qml:55
 msgid "Add all lm_sensors"
 msgstr "Alle lm_sensors toevoegen"
 
-#: ../contents/ui/config/ConfigSensors.qml:154
+#: ../contents/ui/config/ConfigSensors.qml:159
 msgid "Sensor"
 msgstr "Sensor"
 
-#: ../contents/ui/config/ConfigSensors.qml:158
+#: ../contents/ui/config/ConfigSensors.qml:163
 msgid "Label"
 msgstr "Label"
 
-#: ../contents/ui/config/ConfigSensors.qml:162
+#: ../contents/ui/config/ConfigSensors.qml:167
 msgid "SubLabel"
 msgstr "Sublabel"
 
-#: ../contents/ui/config/ConfigSensors.qml:166
+#: ../contents/ui/config/ConfigSensors.qml:171
 msgid "Color"
 msgstr "Kleur"
 
-#: ../contents/ui/config/ConfigSensors.qml:171
+#: ../contents/ui/config/ConfigSensors.qml:176
 msgid "Icon"
 msgstr "Pictogram"
 
-#: ../contents/ui/config/ConfigSensors.qml:175
+#: ../contents/ui/config/ConfigSensors.qml:180
 msgid "Units"
 msgstr "Eenheden"
 
-#: ../contents/ui/config/ConfigSensors.qml:179
+#: ../contents/ui/config/ConfigSensors.qml:184
 msgid "MaxY"
 msgstr "MaxY"
+
+#: ../contents/ui/config/ConfigSettings.qml:10
+msgid "Dashboard Sensors"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSettings.qml:13 ../contents/ui/config/ConfigSettings.qml:32
+msgid "Update Every:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSettings.qml:17 ../contents/ui/config/ConfigSettings.qml:36
+msgid "ms"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSettings.qml:20 ../contents/ui/config/ConfigSettings.qml:39
+msgid "Visible Duration:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSettings.qml:24 ../contents/ui/config/ConfigSettings.qml:42
+msgid "sec"
+msgstr ""
+
+#: ../contents/ui/config/ConfigSettings.qml:28
+msgid "Panel Icon"
+msgstr ""
 
 #: ../contents/ui/DashView.qml:73
 msgid "CPU"
 msgstr "CPU"
 
-#: ../contents/ui/DashView.qml:98
+#: ../contents/ui/DashView.qml:133
 msgid "Cached"
 msgstr "Gecachet"
 
-#: ../contents/ui/DashView.qml:99
+#: ../contents/ui/DashView.qml:134
 msgid "Buffered"
 msgstr "Gebufferd"
 
-#: ../contents/ui/DashView.qml:100
+#: ../contents/ui/DashView.qml:135
 msgid "Apps"
 msgstr "Apps"
 
-#: ../contents/ui/DashView.qml:103 ../contents/ui/DashView.qml:130
+#: ../contents/ui/DashView.qml:138 ../contents/ui/DashView.qml:165
 msgid "Free"
 msgstr "Vrij"
 
-#: ../contents/ui/DashView.qml:112
+#: ../contents/ui/DashView.qml:147
 msgid "RAM"
 msgstr "RAM"
 
-#: ../contents/ui/DashView.qml:127
+#: ../contents/ui/DashView.qml:162
 msgid "Used"
 msgstr "Gebruikt"
 
-#: ../contents/ui/DashView.qml:137
+#: ../contents/ui/DashView.qml:172
 msgid "Swap"
 msgstr "Wisselgeheugen"
 
@@ -110,16 +142,21 @@ msgstr "Weggeschreven"
 msgid "<b>Version:</b> %1"
 msgstr "<b>Versie:</b> %1"
 
-#: ../contents/ui/ListBlockDevices.qml:37
+#: ../contents/ui/ListBlockDevices.qml:41
+msgctxt "diskName diskLabel"
+msgid "%1 (%2)"
+msgstr ""
+
+#: ../contents/ui/ListBlockDevices.qml:45
 msgid "Disk: %1"
 msgstr "Schijf: %1"
 
-#: ../contents/ui/ListBlockDevices.qml:38
+#: ../contents/ui/ListBlockDevices.qml:47
 msgctxt "diskModel sizeGb"
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: ../contents/ui/main.qml:69
+#: ../contents/ui/main.qml:73
 msgid "Start Task Manager"
 msgstr "Systeemmonitor starten"
 
@@ -131,19 +168,27 @@ msgstr "Gedownload"
 msgid "Upload"
 msgstr "Geüpload"
 
-#: ../contents/ui/NetworkIOGraph.qml:15 ../contents/ui/NetworkListDetector.qml:51
+#: ../contents/ui/NetworkIOGraph.qml:15 ../contents/ui/NetworkListDetector.qml:64
 msgid "Network"
 msgstr "Netwerk"
 
-#: ../contents/ui/NetworkListDetector.qml:48
+#: ../contents/ui/NetworkListDetector.qml:61
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
+
+#: ../contents/ui/NewUserSplash.qml:37
+msgid "You can hide disks and networks in the config. You can also monitor temperature and fan speed sensors if you have lm-sensors installed."
+msgstr ""
+
+#: ../contents/ui/NewUserSplash.qml:48
+msgid "Configure Sensors"
+msgstr ""
 
 #: ../contents/ui/PartitionUsageBar.qml:17
 msgid "<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4"
 msgstr "<b>%1</b><br>Grootte: %2<br>Gebruikt: %3<br>Vrij: %4"
 
-#: ../contents/ui/SensorGraph.qml:368
+#: ../contents/ui/SensorGraph.qml:397 ../contents/ui/SensorGraph.qml:399
 msgctxt "%1 is data value, %2 is unit datatype"
 msgid "%1 %2"
 msgstr "%1 %2"
