@@ -5,7 +5,7 @@ import QtQuick.Layouts 1.0
 import ".."
 import "../lib"
 
-ColumnLayout {
+ConfigPage {
 
 	signal configurationChanged()
 
@@ -32,12 +32,10 @@ ColumnLayout {
 		}
 	}
 
-	ListView {
-		Layout.fillWidth: true
-		Layout.fillHeight: true
+	Repeater {
 		model: sensorDetector.networkSensorList
 
-		delegate: CheckBox {
+		CheckBox {
 			readonly property string networkName: modelData
 			readonly property bool ignoredByDefault: {
 				// Keep this in sync with NetworkListDetector.qml
