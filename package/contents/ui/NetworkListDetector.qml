@@ -5,6 +5,11 @@ QtObject {
 
 	property var networkModel: []
 
+	readonly property var ignoredNetworks: plasmoid.configuration.ignoredNetworks
+	onIgnoredNetworksChanged: {
+		updateNetworkModel()
+	}
+
 	property Connections sensorConnection: Connections {
 		target: sensorData
 		onNetworkSensorListChanged: {
@@ -36,11 +41,16 @@ QtObject {
 			// p5 = Port 5
 			// s6 = Slot 6
 
+			// Keep this in sync with ConfigNetworks.qml
 			if (networkName == 'lo' // Ignore loopback device
 			  || networkName.match(/^docker(\d+)/) // Ignore docker networks
 			  || networkName.match(/^(tun|tap)(\d+)/) // Ingore tun/tap interfaces
 			) { 
-				continue;
+				continue
+			}
+
+			if (ignoredNetworks.indexOf(networkName) >= 0) {
+				continue
 			}
 
 			var newNetwork = {}
@@ -58,6 +68,8 @@ QtObject {
 		}
 
 		networkModel = newNetworkModel
+
+		// console.log(JSON.stringify(networkModel, null, '  '))
 	}
 }
 

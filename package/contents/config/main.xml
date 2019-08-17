@@ -66,6 +66,10 @@
 			<default>[]</default>
 		</entry>
 
+		<entry name="ignoredNetworks" type="StringList">
+			<default></default>
+		</entry>
+
 	</group>
 
 </kcfg>
