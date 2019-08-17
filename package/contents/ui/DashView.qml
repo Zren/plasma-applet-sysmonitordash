@@ -211,6 +211,10 @@ Kicker.DashboardWindow {
 					width: sensorScrollView.viewportWidth
 					spacing: units.largeSpacing
 
+					NewUserSplash {
+						id: newUserSplash
+					}
+
 					Repeater {
 						model: config.sensorModel
 
@@ -244,6 +248,7 @@ Kicker.DashboardWindow {
 
 		MouseArea {
 			anchors.fill: parent
+			enabled: !newUserSplash.configureButton.hovered
 			onClicked: window.close()
 		}
 	}
