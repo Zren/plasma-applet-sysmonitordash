@@ -25,7 +25,7 @@ QtObject {
 		// 		"interfaceName": "wlp1s0"
 		// 	}
 		// ]
-		var newNeworkModel = []
+		var newNetworkModel = []
 		for (var i = 0; i < sensorData.networkSensorList.length; i++) {
 			var networkName = sensorData.networkSensorList[i]
 
@@ -54,10 +54,10 @@ QtObject {
 				newNetwork.label = i18n("Network")
 				newNetwork.icon = "network-wired"
 			}
-			newNeworkModel.push(newNetwork)
+			newNetworkModel.push(newNetwork)
 		}
 
-		networkModel = newNeworkModel
+		networkModel = newNetworkModel
 	}
 }
 
