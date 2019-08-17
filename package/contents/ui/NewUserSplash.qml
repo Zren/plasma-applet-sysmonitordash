@@ -16,8 +16,8 @@ Item {
 
 	Layout.fillWidth: true
 
-	implicitWidth: layout.implicitWidth + anchors.margins*2
-	implicitHeight: layout.implicitHeight + anchors.margins*2
+	implicitWidth: layout.implicitWidth
+	implicitHeight: layout.implicitHeight
 
 	Rectangle {
 		anchors.fill: parent
