@@ -14,7 +14,7 @@
 * Make sure the hovered line is aligned to a data point.
 * Show applet version in sensors page.
 * Implement a network toggle config page (Issue #8)
-* (origin/master) Add a text blurb and config button for new users (Issue #16)
+* Add a text blurb and config button for new users (Issue #16)
 
 ## v2 - January 28 2019
 
