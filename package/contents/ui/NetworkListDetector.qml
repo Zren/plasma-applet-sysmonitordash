@@ -3,6 +3,8 @@ import QtQuick 2.0
 QtObject {
 	id: networkListDetector
 
+	property var networkModel: []
+
 	property Connections sensorConnection: Connections {
 		target: sensorData
 		onNetworkSensorListChanged: {
@@ -54,7 +56,8 @@ QtObject {
 			}
 			newNeworkModel.push(newNetwork)
 		}
-		config.networkModel = newNeworkModel
+
+		networkModel = newNeworkModel
 	}
 }
 

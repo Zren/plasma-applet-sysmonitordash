@@ -60,6 +60,9 @@ Item {
 
 	NetworkListDetector {
 		id: networkListDetector
+		onNetworkModelChanged: {
+			config.networkModel = networkModel
+		}
 	}
 
 	function action_openTaskManager() {
