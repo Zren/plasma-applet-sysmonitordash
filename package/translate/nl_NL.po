@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the sysmonitordash package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-msgid ""
+msgid 
 msgstr ""
 "Project-Id-Version: sysmonitordash\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
@@ -24,11 +24,11 @@ msgstr "Sensoren"
 
 #: ../contents/config/config.qml:12
 msgid "Networks"
-msgstr ""
+msgstr "Netwerken"
 
 #: ../contents/config/config.qml:17
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../contents/ui/config/ConfigSensors.qml:40
 msgid "Add Sensor"
@@ -76,27 +76,27 @@ msgstr "MaxY"
 
 #: ../contents/ui/config/ConfigSettings.qml:10
 msgid "Dashboard Sensors"
-msgstr ""
+msgstr "Dashboardsensors"
 
 #: ../contents/ui/config/ConfigSettings.qml:13 ../contents/ui/config/ConfigSettings.qml:32
 msgid "Update Every:"
-msgstr ""
+msgstr "Bijwerken, elke:"
 
 #: ../contents/ui/config/ConfigSettings.qml:17 ../contents/ui/config/ConfigSettings.qml:36
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: ../contents/ui/config/ConfigSettings.qml:20 ../contents/ui/config/ConfigSettings.qml:39
 msgid "Visible Duration:"
-msgstr ""
+msgstr "Zichtbaar gedurende:"
 
 #: ../contents/ui/config/ConfigSettings.qml:24 ../contents/ui/config/ConfigSettings.qml:42
 msgid "sec"
-msgstr ""
+msgstr "sec"
 
 #: ../contents/ui/config/ConfigSettings.qml:28
 msgid "Panel Icon"
-msgstr ""
+msgstr "Paneelpictogram"
 
 #: ../contents/ui/DashView.qml:73
 msgid "CPU"
@@ -145,7 +145,7 @@ msgstr "<b>Versie:</b> %1"
 #: ../contents/ui/ListBlockDevices.qml:41
 msgctxt "diskName diskLabel"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: ../contents/ui/ListBlockDevices.qml:45
 msgid "Disk: %1"
@@ -178,11 +178,11 @@ msgstr "Wi-Fi"
 
 #: ../contents/ui/NewUserSplash.qml:37
 msgid "You can hide disks and networks in the config. You can also monitor temperature and fan speed sensors if you have lm-sensors installed."
-msgstr ""
+msgstr "Schijven en netwerken kunnen worden verborgen in de instellingen. Als je lm-sensors installeert, dan kun je ook de temperatuur en ventilatorsnelheid in de gaten houden."
 
 #: ../contents/ui/NewUserSplash.qml:48
 msgid "Configure Sensors"
-msgstr ""
+msgstr "Sensoren instellen"
 
 #: ../contents/ui/PartitionUsageBar.qml:17
 msgid "<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4"
