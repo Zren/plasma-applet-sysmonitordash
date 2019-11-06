@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the sysmonitordash package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-msgid 
+msgid ""
 msgstr ""
 "Project-Id-Version: sysmonitordash\n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
