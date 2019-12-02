@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sysmonitordash \n"
 "Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-sysmonitordash\n"
-"POT-Creation-Date: 2019-08-17 17:17-0400\n"
+"POT-Creation-Date: 2019-12-02 17:10-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,189 +17,189 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../contents/config/config.qml:7
+#: ../contents/config/config.qml
 msgid "Sensors"
 msgstr ""
 
-#: ../contents/config/config.qml:12
+#: ../contents/config/config.qml
 msgid "Networks"
 msgstr ""
 
-#: ../contents/config/config.qml:17
+#: ../contents/config/config.qml
 msgid "Settings"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:40
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Add Sensor"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:45
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Add Temps"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:50
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Add Fans"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:55
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Add all lm_sensors"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:159
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Sensor"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:163
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Label"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:167
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "SubLabel"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:171
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Color"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:176
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Icon"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:180
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "Units"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSensors.qml:184
+#: ../contents/ui/config/ConfigSensors.qml
 msgid "MaxY"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSettings.qml:10
+#: ../contents/ui/config/ConfigSettings.qml
 msgid "Dashboard Sensors"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSettings.qml:13 ../contents/ui/config/ConfigSettings.qml:32
+#: ../contents/ui/config/ConfigSettings.qml
 msgid "Update Every:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSettings.qml:17 ../contents/ui/config/ConfigSettings.qml:36
+#: ../contents/ui/config/ConfigSettings.qml
 msgid "ms"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSettings.qml:20 ../contents/ui/config/ConfigSettings.qml:39
+#: ../contents/ui/config/ConfigSettings.qml
 msgid "Visible Duration:"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSettings.qml:24 ../contents/ui/config/ConfigSettings.qml:42
+#: ../contents/ui/config/ConfigSettings.qml
 msgid "sec"
 msgstr ""
 
-#: ../contents/ui/config/ConfigSettings.qml:28
+#: ../contents/ui/config/ConfigSettings.qml
 msgid "Panel Icon"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:73
+#: ../contents/ui/DashView.qml
 msgid "CPU"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:133
+#: ../contents/ui/DashView.qml
 msgid "Cached"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:134
+#: ../contents/ui/DashView.qml
 msgid "Buffered"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:135
+#: ../contents/ui/DashView.qml
 msgid "Apps"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:138 ../contents/ui/DashView.qml:165
+#: ../contents/ui/DashView.qml
 msgid "Free"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:147
+#: ../contents/ui/DashView.qml
 msgid "RAM"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:162
+#: ../contents/ui/DashView.qml
 msgid "Used"
 msgstr ""
 
-#: ../contents/ui/DashView.qml:172
+#: ../contents/ui/DashView.qml
 msgid "Swap"
 msgstr ""
 
-#: ../contents/ui/DiskIOGraph.qml:8
+#: ../contents/ui/DiskIOGraph.qml
 msgid "Read"
 msgstr ""
 
-#: ../contents/ui/DiskIOGraph.qml:9
+#: ../contents/ui/DiskIOGraph.qml
 msgid "Write"
 msgstr ""
 
-#: ../contents/ui/lib/AppletVersion.qml:41
+#: ../contents/ui/lib/AppletVersion.qml
 msgid "<b>Version:</b> %1"
 msgstr ""
 
-#: ../contents/ui/ListBlockDevices.qml:41
+#: ../contents/ui/ListBlockDevices.qml
 msgctxt "diskName diskLabel"
 msgid "%1 (%2)"
 msgstr ""
 
-#: ../contents/ui/ListBlockDevices.qml:45
+#: ../contents/ui/ListBlockDevices.qml
 msgid "Disk: %1"
 msgstr ""
 
-#: ../contents/ui/ListBlockDevices.qml:47
+#: ../contents/ui/ListBlockDevices.qml
 msgctxt "diskModel sizeGb"
 msgid "%1 %2"
 msgstr ""
 
-#: ../contents/ui/main.qml:73
+#: ../contents/ui/main.qml
 msgid "Start Task Manager"
 msgstr ""
 
-#: ../contents/ui/NetworkIOGraph.qml:8
+#: ../contents/ui/NetworkIOGraph.qml
 msgid "Download"
 msgstr ""
 
-#: ../contents/ui/NetworkIOGraph.qml:9
+#: ../contents/ui/NetworkIOGraph.qml
 msgid "Upload"
 msgstr ""
 
-#: ../contents/ui/NetworkIOGraph.qml:15 ../contents/ui/NetworkListDetector.qml:64
+#: ../contents/ui/NetworkIOGraph.qml ../contents/ui/NetworkListDetector.qml
 msgid "Network"
 msgstr ""
 
-#: ../contents/ui/NetworkListDetector.qml:61
+#: ../contents/ui/NetworkListDetector.qml
 msgid "Wi-Fi"
 msgstr ""
 
-#: ../contents/ui/NewUserSplash.qml:37
+#: ../contents/ui/NewUserSplash.qml
 msgid "You can hide disks and networks in the config. You can also monitor temperature and fan speed sensors if you have lm-sensors installed."
 msgstr ""
 
-#: ../contents/ui/NewUserSplash.qml:48
+#: ../contents/ui/NewUserSplash.qml
 msgid "Configure Sensors"
 msgstr ""
 
-#: ../contents/ui/PartitionUsageBar.qml:17
+#: ../contents/ui/PartitionUsageBar.qml
 msgid "<b>%1</b><br>Size: %2<br>Used: %3<br>Free: %4"
 msgstr ""
 
-#: ../contents/ui/SensorGraph.qml:397 ../contents/ui/SensorGraph.qml:399
+#: ../contents/ui/SensorGraph.qml
 msgctxt "%1 is data value, %2 is unit datatype"
 msgid "%1 %2"
 msgstr ""
 
-#: ../contents/ui/SensorPresets.qml:10
+#: ../contents/ui/SensorPresets.qml
 msgid "Fan"
 msgstr ""
 
-#: ../contents/ui/SensorPresets.qml:21
+#: ../contents/ui/SensorPresets.qml
 msgid "Temp"
 msgstr ""
 
-#: ../contents/ui/SensorPresets.qml:28
+#: ../contents/ui/SensorPresets.qml
 msgid "GPU"
 msgstr ""
