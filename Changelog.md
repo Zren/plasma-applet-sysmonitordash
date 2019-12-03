@@ -1,3 +1,8 @@
+## v4 - December 2 2019
+
+* Fix bug when leaving "settings" config tab caused plasma to freeze.
+* Updated Dutch translation by @Vistaus (Pull Request #21)
+
 ## v3 - August 17 2019
 
 * Add a new config tab for tweaking the update interval (Issue #6)
