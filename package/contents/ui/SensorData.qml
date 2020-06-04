@@ -101,7 +101,7 @@ Item {
 
 		property string partitionsList: "partitions/list"
 
-		property string deviceName: 'enp3s0' //'wlp5s6' //appletProxyModel[0].DeviceName
+		//property string deviceName: 'enp3s0' //'wlp5s6' //appletProxyModel[0].DeviceName
 		property string downloadSource: "network/interfaces/" + deviceName + "/receiver/data"
 		property string uploadSource: "network/interfaces/" + deviceName + "/transmitter/data"
 
