@@ -53,9 +53,6 @@ Item {
 	readonly property var partitionsList: getData(dataSource.partitionsList)
 	// onPartitionsListChanged: console.log('partitionsList', partitionsList)
 
-	readonly property real uploadSpeed: getData(dataSource.uploadSource)
-	readonly property real downloadSpeed: getData(dataSource.downloadSource)
-
 	property var networkSensorList: []
 
 	// /usr/share/plasma/plasmoids/org.kde.plasma.systemloadviewer/contents/ui/SystemLoadViewer.qml
@@ -101,9 +98,9 @@ Item {
 
 		property string partitionsList: "partitions/list"
 
-		property string deviceName: 'enp3s0' //'wlp5s6' //appletProxyModel[0].DeviceName
-		property string downloadSource: "network/interfaces/" + deviceName + "/receiver/data"
-		property string uploadSource: "network/interfaces/" + deviceName + "/transmitter/data"
+		// property string deviceName: 'enp3s0' //'wlp5s6' //appletProxyModel[0].DeviceName
+		// property string downloadSource: "network/interfaces/" + deviceName + "/receiver/data"
+		// property string uploadSource: "network/interfaces/" + deviceName + "/transmitter/data"
 
 		property var totalCpuLoadProportions: [.0, .0, .0, .0]
 		property int maxCpuIndex: 0
@@ -114,8 +111,8 @@ Item {
 			ioWait, memFree, memApplication, memBuffers,
 			memCached, memUsed, swapUsed, swapFree,
 			averageClock, totalLoad,
-			partitionsList,
-			downloadSource, uploadSource]
+			partitionsList
+		]
 
 		onSourceAdded: {
 			// console.log('onSourceAdded', source)
