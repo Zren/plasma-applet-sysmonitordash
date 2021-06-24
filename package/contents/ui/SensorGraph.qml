@@ -170,7 +170,9 @@ Item {
 				leftMargin: sensorGraph.padding
 				topMargin: sensorGraph.padding
 				bottomMargin: sensorGraph.padding
-				rightMargin: sensorGraph.padding * 8
+				readonly property int freeSpace: (sensorGraph.width-legendGridLayout.width)/2
+				readonly property int defaultSpace: sensorGraph.padding*8
+				rightMargin: freeSpace>defaultSpace ? defaultSpace : freeSpace
 			}
 			// Rectangle { border.color: "#ff0"; anchors.fill: parent; color: "transparent"; border.width: 1}
 
@@ -236,7 +238,7 @@ Item {
 								Layout.preferredWidth = implicitWidth
 							}
 						}
-						Layout.maximumWidth: legendGridLayout.maxColumnWidth
+						Layout.maximumWidth: sensorGraph.width-sensorGraph.padding*4
 					}
 				}
 				
