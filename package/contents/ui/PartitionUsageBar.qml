@@ -97,7 +97,7 @@ SimpleProgressBar {
 			return match
 		}
 
-		onSourceAdded: {
+		function onSourceAdded(source) {
 			var match = isPartitionSource(source)
 			if (match) {
 				if (match[1] == partitionPath) {
@@ -107,7 +107,7 @@ SimpleProgressBar {
 				}
 			}
 		}
-		onSourceRemoved: {
+		function onSourceRemoved(source) {
 			var match = isPartitionSource(source)
 			if (match) {
 				if (match[1] == partitionPath) {

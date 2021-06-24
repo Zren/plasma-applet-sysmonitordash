@@ -170,7 +170,9 @@ Item {
 				leftMargin: sensorGraph.padding
 				topMargin: sensorGraph.padding
 				bottomMargin: sensorGraph.padding
-				rightMargin: sensorGraph.padding * 8
+				readonly property int freeSpace: (sensorGraph.width-legendGridLayout.width)/2
+				readonly property int defaultSpace: sensorGraph.padding*8
+				rightMargin: freeSpace>defaultSpace ? defaultSpace : freeSpace
 			}
 			// Rectangle { border.color: "#ff0"; anchors.fill: parent; color: "transparent"; border.width: 1}
 
@@ -236,7 +238,7 @@ Item {
 								Layout.preferredWidth = implicitWidth
 							}
 						}
-						Layout.maximumWidth: legendGridLayout.maxColumnWidth
+						Layout.maximumWidth: sensorGraph.width-sensorGraph.padding*4
 					}
 				}
 				
@@ -286,7 +288,7 @@ Item {
 
 		Connections {
 			target: sensorData
-			onDataTick: {
+			function onDataTick() {
 				var values = new Array(plotter.sensors.length)
 				for (var i = 0; i < plotter.sensors.length; i++) {
 					values[i] = sensorData.getData(sensors[i])
@@ -317,8 +319,8 @@ Item {
 		}
 		Connections {
 			target: mouseArea
-			onMouseXChanged: plotter.updateHoveredIndex()
-			onContainsMouseChanged: plotter.updateHoveredIndex()
+			function onMouseXChanged(){ plotter.updateHoveredIndex()}
+			function onContainsMouseChanged(){ plotter.updateHoveredIndex()}
 		}
 		Rectangle {
 			id: hoverLine
@@ -360,7 +362,7 @@ Item {
 				Connections {
 					target: plotter
 					enabled: tooltip.visible
-					onValuesChanged: {
+					function onValuesChanged() {
 						tooltip.updateText()
 					}
 				}
