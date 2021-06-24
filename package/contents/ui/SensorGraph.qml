@@ -286,7 +286,7 @@ Item {
 
 		Connections {
 			target: sensorData
-			onDataTick: {
+			function onDataTick() {
 				var values = new Array(plotter.sensors.length)
 				for (var i = 0; i < plotter.sensors.length; i++) {
 					values[i] = sensorData.getData(sensors[i])
@@ -317,8 +317,8 @@ Item {
 		}
 		Connections {
 			target: mouseArea
-			onMouseXChanged: plotter.updateHoveredIndex()
-			onContainsMouseChanged: plotter.updateHoveredIndex()
+			function onMouseXChanged(){ plotter.updateHoveredIndex()}
+			function onContainsMouseChanged(){ plotter.updateHoveredIndex()}
 		}
 		Rectangle {
 			id: hoverLine
@@ -360,7 +360,7 @@ Item {
 				Connections {
 					target: plotter
 					enabled: tooltip.visible
-					onValuesChanged: {
+					function onValuesChanged() {
 						tooltip.updateText()
 					}
 				}
